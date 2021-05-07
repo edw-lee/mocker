@@ -1,4 +1,4 @@
-.svg
+*.svg
 */node_modules
 */.env
 */.vscode
