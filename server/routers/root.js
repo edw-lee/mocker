@@ -6,8 +6,9 @@ const { resolve } = require('path');
 
 const router = express.Router();
 
+//Send the app index.html in the React build folder
 router.get('/', (req, res) => {
-    res.send('Welcome to Mocker Backend!');
+    res.sendFile(path.join(__dirname, '../../app/build/index.html'));
 });
 
 //This is called when user login, it will create a new user in the database if it does not exist
@@ -42,7 +43,7 @@ router.post('/login', (req, res) => {
 
 router.get('/readpublicdir', (req, res) => {
     let { dir } = req.query;
-    dir = path.join(__dirname, `../../mocker-frontend/public/${dir}`);    
+    dir = path.join(__dirname, `../../${process.env.APP_FOLDER}/public/${dir}`);    
 
     if (dir) {
         const getFiles = async (_dir) => {        

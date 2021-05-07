@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
+const path = require('path');
 
 app.use(cors({ origin: 'http://localhost:3000', credentials:true }));
 app.use(session({
@@ -15,6 +16,10 @@ app.use(session({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//For production
+app.use(express.static(path.join(__dirname, '../app/build')));
+
 app.use('/', rootrouter);
 
 

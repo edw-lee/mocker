@@ -11,7 +11,7 @@ const initialState = {
     history: [],
     historyIdx: 0
 }
-//TODO: Create a update history buffer instead of calling this in the actions
+
 function addHistory(state, currentState, newState) {    
     if (currentState === newState) return state;
 
