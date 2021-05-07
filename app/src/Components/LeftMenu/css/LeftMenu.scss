@@ -1,0 +1,36 @@
+@use '../../../App';
+@use '../../MenuBar/css/MenuBar.scss';
+
+$menu-width: 15rem;
+
+.left-menu-ex {
+    @include App.no-select;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - #{MenuBar.$navbar-height});
+    width: $menu-width;    
+    word-break: break-all; 
+}
+
+.left-menu {    
+    background: App.$secondary;
+
+    li {                
+        border-bottom: 1px solid App.$secondary-h;
+        font-weight: 900;
+        font-size: 1.25rem;
+        text-align: center;
+        padding: 1rem;
+        color: App.$text-light;
+        cursor: pointer;
+
+        &:hover {
+            background: App.$secondary-l;
+        }
+
+        &.active {
+            background: App.$primary-h;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.workspace {
+    background-color: white;
+    display: flex;
+    flex: 1;
+
+    iframe {
+        display: flex;
+        flex: 1;
+        border: none;
+    }
+}

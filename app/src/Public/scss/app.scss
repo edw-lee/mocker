@@ -1,0 +1,25 @@
+@use '../../App.scss';
+
+.plain-table {
+    border: 1px solid;
+    border-collapse: collapse;
+    margin: 0.5rem;
+
+    & td,
+    & th {
+        border: 1px solid;
+        padding: 0.25rem;
+
+        &:empty::before {
+            content: "";
+            display: block;
+            width: 2rem;
+            height: 1.5rem;
+        }
+    }
+
+    & thead,
+    & tfoot {
+        background: gray;
+    }
+}

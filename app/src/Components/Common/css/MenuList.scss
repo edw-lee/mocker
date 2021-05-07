@@ -1,0 +1,10 @@
+@use '../../../App.scss';
+
+.menu-list {
+    @include App.no-list-style;
+    @include App.no-select;
+    
+    li {        
+        cursor: pointer;
+    }
+}

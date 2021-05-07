@@ -1,0 +1,55 @@
+@use '../../App.scss';
+
+.plain-table {
+    border: 1px solid;
+    border-collapse: collapse;
+    margin: 0.5rem;
+
+    & td,
+    & th {
+        border: 1px solid;
+        padding: 0.25rem;
+
+        &:empty::before {
+            content: "";
+            display: block;
+            width: 2rem;
+            height: 1.5rem;
+        }
+    }
+
+    & thead,
+    & tfoot {
+        background: gray;
+    }
+}
+
+#container {
+    @include App.no-select;
+    cursor: pointer;
+}
+
+#dragbox {            
+    position: absolute;
+
+    & * {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.layoutbox {
+    outline: 1px dashed;
+}
+
+.selected {
+    outline: 3px solid App.$primary;    
+}
+
+.dragging {
+    opacity: 0.65;
+}
+
+.hovered {
+    outline: 3px solid App.$secondary;
+}

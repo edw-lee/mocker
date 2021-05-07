@@ -1,0 +1,79 @@
+@use '../../../App.scss';
+
+.dialogbox-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: App.$black50;
+    z-index: 9999;
+}
+
+.dialogbox {
+    position: fixed;
+    background: App.$secondary;
+    border: 1px solid App.$secondary-h;
+    border-radius: 0.5rem;    
+    font-size: App.$font-normal;
+}
+
+.dialogbox-title {
+    @include App.no-select;
+
+    display: flex;       
+    justify-content: center;    
+    color: App.$text-light;
+    font-weight: App.$font-bold;
+    font-size: App.$font-big;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background: App.$secondary-h;
+
+    & .close-btn {                
+        margin-left: auto;     
+        margin-right: 10px;
+        align-self: flex-end;
+    }
+}
+
+.dialogbox-msg {
+    display: flex;
+    color: App.$text-light;
+    min-width: 20rem;
+    margin: 0.8rem;    
+
+    & > * {
+        flex: 1;        
+    }
+}
+
+.dialogbox-btn-grp {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.8rem;
+
+    .dialogbox-cancel-btn {
+        background: App.$secondary-light;
+
+        &:hover {
+            background: App.$secondary-light-l;
+        }
+    }
+
+    & button {
+        margin-left: 0.5rem;
+        background: App.$primary-h;
+        color: App.$text-light;
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+
+        &:hover {
+            background: App.$primary;
+        }
+    }
+}

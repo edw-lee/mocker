@@ -1,0 +1,31 @@
+@use '../../../App.scss';
+
+ul.hierarchy {
+    list-style: none;
+    padding: 0 1rem;    
+    margin: 0.5rem 0;
+    color: App.$text-light;
+
+    & ul {
+        list-style: none;
+        padding: 0;
+        padding-left: 1rem;        
+        margin: 0;        
+        color: App.$text-light;
+    }
+
+    & span {
+        padding: 0.25rem;
+        display: flex;
+        cursor: pointer;
+        &:hover {
+            background-color: App.$secondary;
+        }
+    }
+}
+
+.empty-hierarchy {
+    color: App.$text-light;
+    text-align: center;
+    margin-top: 0.5rem;
+}

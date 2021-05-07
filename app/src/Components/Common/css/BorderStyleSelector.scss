@@ -1,0 +1,73 @@
+@use '../../../App.scss';
+
+$border-width: 4px;
+$border-padding: 2px;
+
+.borderstyle-selector {
+    position: relative;
+    min-width: 100px;        
+}
+
+.borderstyle-optbtn {
+    background: white;
+    border-radius: 3px;
+    padding: 8px 5px;        
+    display: flex;
+    align-items: center;
+    color: App.$secondary-dark;    
+    font-size: App.$font-small;
+    line-height: 0rem;     
+
+    & > div {              
+        border-color: App.$secondary-dark;          
+        border: $border-width;
+        padding: $border-padding;
+        flex-grow: 1;      
+        margin-right: 5px;
+        pointer-events: none;
+    }
+
+    & > i {
+        color: black;
+        margin-left: auto;
+        font-size: App.$font-tiny;
+        pointer-events: none;
+    }
+}
+
+.borderstyle-options {
+    @include App.no-select;
+
+    position: absolute;
+    width: 100%;  
+    max-height: 200px;  
+    display: none;
+    overflow: auto;
+    z-index: 1;
+    outline:1px solid gray;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+    & > div {        
+        padding: 8px 5px;
+        background: white;
+        display: flex;        
+        font-size: App.$font-tiny;
+
+        &.selected {
+            background: App.$secondary-light-h;
+        }
+
+        &:hover {
+            background: App.$secondary-light-h;
+            cursor: pointer;
+        }
+
+        & > div {
+            flex-grow: 1;              
+            color: App.$secondary-dark;
+            border-color: App.$secondary-dark;
+            padding: $border-padding;            
+            border: $border-width;
+        }
+    }
+}

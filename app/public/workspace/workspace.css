@@ -1,0 +1,152 @@
+:root {
+  --primary: #86c232;
+  --accent: #61892f;
+  --secondary: #474b4f;
+  --secondary-l: #626669;
+  --text-light: #deeec7;
+  --text-light2: #5b5d5f;
+  --secondary-light: #74787a;
+  --secondary-light-l: #868b8d;
+}
+
+#root {
+  height: 100vh;
+}
+
+.plus-btn {
+  margin: auto;
+  margin-top: 0.5rem;
+  font-size: 2rem;
+  color: #86c232;
+  cursor: pointer;
+}
+.plus-btn:hover:not(.disabled) {
+  color: #9ddd43;
+}
+.plus-btn:active:not(.disabled) {
+  color: #74aa29;
+}
+.plus-btn.disabled {
+  color: #5b5d5f;
+}
+
+.primary-btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0.5rem;
+  color: #deeec7;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+  background: #86c232;
+}
+.primary-btn:hover {
+  background: #95d639;
+}
+.primary-btn:active {
+  background: #6c9c28;
+}
+
+.secondary-light-btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0.5rem;
+  color: #deeec7;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+  background: #74787a;
+}
+.secondary-light-btn:hover {
+  background: #868b8d;
+}
+.secondary-light-btn:active {
+  background: #636769;
+}
+
+.icon-btn {
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  color: #deeec7;
+  font-size: 18px;
+}
+.icon-btn span {
+  outline: #c3d8a6;
+}
+.icon-btn svg {
+  fill: #deeec7;
+  stroke: #deeec7;
+}
+.icon-btn:hover {
+  outline: #c3d8a6;
+  color: #c3d8a6;
+}
+.icon-btn:hover svg {
+  fill: #c3d8a6;
+  stroke: #c3d8a6;
+}
+
+.plain-table {
+  border: 1px solid;
+  border-collapse: collapse;
+  margin: 0.5rem;
+}
+.plain-table td, .plain-table th {
+  border: 1px solid;
+  padding: 0.25rem;
+}
+.plain-table td:empty::before, .plain-table th:empty::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 1.5rem;
+}
+.plain-table thead, .plain-table tfoot {
+  background: gray;
+}
+
+#container {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  cursor: pointer;
+}
+
+#dragbox {
+  position: absolute;
+}
+#dragbox * {
+  margin: 0;
+  padding: 0;
+}
+
+.layoutbox {
+  outline: 1px dashed;
+}
+
+.selected {
+  outline: 3px solid #86c232;
+}
+
+.dragging {
+  opacity: 0.65;
+}
+
+.hovered {
+  outline: 3px solid #474b4f;
+}
+
+/*# sourceMappingURL=workspace.css.map */

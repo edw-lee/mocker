@@ -1,0 +1,10 @@
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const ADD_OBJECTS = 'ADD_OBJECTS';
+export const REPLACE_OBJECTS = 'REPLACE_OBJECTS';
+export const UPDATE_ONE_OBJECT = 'UPDATE_ONE_OBJECT';
+export const SELECT_ONE_OBJECT = 'SELECT_ONE_OBJECT';
+export const SELECT_OBJECT = 'SELECT_OBJECT';
+export const DESELECT_OBJECT = 'DESELECT_OBJECT';
+export const DESELECT_ALL = 'DESELECT_ALL';
+export const UNDO = 'UNDO';
+export const REDO = 'REDO';

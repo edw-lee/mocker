@@ -1,0 +1,51 @@
+@use '../../../App.scss';
+
+.styled-rb-grp {
+    display: flex;    
+    margin-bottom: 1rem;
+}
+
+.styled-rb {
+    display: flex;
+    flex: 1;
+    justify-content: center;     
+
+    & input[type="radio"] {
+        display: none;
+
+        &::before {
+            content: "";
+        }
+
+        &+label{
+            @include App.no-select;
+            
+            cursor: pointer;
+            display: flex;
+            flex: 1;        
+            justify-content: center;                
+            padding: 0.5rem;
+            background: App.$secondary-dark;                    
+            border-right: 1px solid App.$secondary-dark-h;
+            
+            &:hover {
+                background: App.$secondary-darker;                
+            }
+        }
+
+        &:checked + label {
+            background-color: App.$secondary-darker-h;
+        }
+    }
+
+    &:last-child input + label {   
+        border:0;     
+        border-radius: 0 1rem 1rem 0;
+    }
+
+    &:first-child input + label{
+        border-radius: 1rem 0 0 1rem;        
+    }
+
+
+}

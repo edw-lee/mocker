@@ -1,0 +1,67 @@
+.carousel {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+    .carousel-item {        
+        padding: 0;
+        margin: 0;        
+        display: none;
+        transition: transform 1.25s ease-in-out;
+        width: 100%;
+
+        & * {
+            display: block; //Set to display block because inline/inline-block creates an empty space at the bottom
+            width: 100%;
+        }
+
+        &.active, &.next, &.prev {                        
+            display: block;            
+        }        
+        
+        &.next {
+            position: absolute;  
+            top: 0;            
+            transform: translateX(100%);
+        }
+
+        &.prev {    
+            position: absolute;        
+            top: 0;
+            transform: translateX(-100%);
+        }
+    }
+
+    .prev-btn,
+    .next-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        color: white;
+        top: 0;
+        height: 100%;
+        padding: 0 40px; //Padding to make the hover area bigger        
+        opacity: 0;
+        transition: opacity 0.1s ease-in;
+        cursor: pointer;
+        font-size: 35px;        
+
+        &:hover {
+            opacity: 1;
+            transition: opacity 0.1s ease-in;
+        }
+    }
+
+    .prev-btn {
+        left: 0px;
+        text-shadow: 3px 0px 5px black;
+    }
+
+    .next-btn {
+        right: 0px;
+        text-shadow: -3px 0px 5px black;
+    }
+}

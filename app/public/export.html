@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<!-- This is the template for exporting pages -->
+
+<head>
+    <link rel="stylesheet" href="/css/app.css" type="text/css" />
+    <link rel="stylesheet" href="/css/carousel.css" type="text/css" />
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css" />
+
+    <!--For loading Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />    
+    <link id='fontfamilieslink' href="#" rel="stylesheet" />
+</head>
+
+<body>
+    <div id='container'></div>
+
+    <script src='/scripts/carousel.js'></script>    
+
+    <script>
+        //Initialize carousels
+        const container = document.getElementById('container');
+        //Add onclick listener to carousel buttons
+        const carousels = container.getElementsByClassName('carousel');
+        updateCarousels(carousels);
+    </script>
+</body>

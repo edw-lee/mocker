@@ -1,0 +1,30 @@
+@use '../../../App.scss';
+
+.menu-plus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+
+    @include App.no-list-style;
+    @include App.no-select;
+    
+    li {        
+        text-align: center;
+        padding: 0.8rem 2rem;
+        color: App.$text-light;        
+        font-weight: App.$font-bold;
+        cursor: pointer;
+
+        &:hover {
+            background: App.$primary;
+        }
+
+        &.selected {
+            background: App.$secondary-light-l;
+
+            &:hover {
+                background: App.$primary-l;
+            }
+        }
+    }    
+}

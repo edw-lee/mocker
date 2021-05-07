@@ -1,0 +1,52 @@
+@use '../../../App.scss';
+
+.spreadsheet-menu {    
+    .top-control {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 0.25rem;        
+        background: App.$secondary-light-h;
+
+        button {
+            background: none;
+            color: App.$text-light-h;
+            border: none;
+            font-size: 1.25rem;
+            margin: 0.5rem 0.25rem;
+            cursor: pointer;
+
+            &:hover {
+                color: App.$text-light;
+            }
+        }
+    }
+
+    .no-spreadsheet-text {  
+        display: flex;                     
+        color: App.$text-light;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    .spreadsheet-title {
+        padding: 0.5rem 0;
+        padding-left: 0.5rem;        
+        color: App.$text-light;
+        font-size: App.$font-big;
+        font-weight: App.$font-bold;
+
+        &:hover {
+            background: App.$primary;
+        }
+    }
+}
+
+.sheet-title {
+    color: App.$text-light;    
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;        
+
+    &:hover {
+        background: App.$primary;
+    }
+}

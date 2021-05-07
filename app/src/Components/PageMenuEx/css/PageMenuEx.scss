@@ -1,0 +1,10 @@
+@use '../../../App.scss';
+
+.pages-menu {    
+    .no-page-txt {
+        display: flex;
+        justify-content: center;
+        color: App.$text-light;
+        margin: 1rem 0;        
+    }
+}

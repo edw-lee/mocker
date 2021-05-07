@@ -1,0 +1,13 @@
+@use '../../../App';
+
+.editor-outer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;    
+}
+
+.editor-inner {
+    background: App.$secondary-light;
+    display: flex;
+    flex: 1;    
+}

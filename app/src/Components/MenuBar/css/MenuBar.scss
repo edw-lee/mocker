@@ -1,0 +1,112 @@
+@use '../../../App.scss';
+
+$navbar-height: 60px;
+
+.menu-bar-container {
+    display: flex;
+    background: App.$secondary-dark;
+}
+
+.menu-bar-logo {
+    @include App.no-select;
+
+    font-family: 'Cantarell';
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    margin: 0;
+    height: 100%;
+    line-height: 100%;
+    font-size: 2rem;
+    font-weight: 900;
+    color: App.$primary;
+    bottom: 0.1rem;
+    cursor: pointer;
+
+    &:hover {
+        color: App.$primary-l;
+    }
+}
+
+.menu-login-btn {
+    border: none;
+    border-radius: 0.5rem;
+    background: App.$primary;
+    margin: 1rem;
+    padding: 0.5rem 1.5rem;
+    color: App.$text-light;
+    font-size: App.$font-normal;
+    font-weight: App.$font-bold;
+    cursor: pointer;
+
+    &:hover {
+        background: App.$primary-l;        
+    }
+
+    &:active {
+        background: App.$primary-h;
+        color: App.$text-light-h;
+    }
+}
+
+.menu-userinfo-box {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: flex-end;
+    color: App.$text-light;
+    
+    .menu-username {
+        font-weight: App.$font-bold;
+    }
+}
+
+.menu-bar {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: $navbar-height;
+    max-height: $navbar-height;
+    margin: auto 0;
+
+    ul {                
+        display: flex;
+
+        > * {
+            margin: 0 10px;
+        }       
+        
+        input {            
+            background: none;
+            border-radius: 0;
+            border-bottom: 1px solid;
+            color: App.$secondary-light;
+            font-size: App.$font-big;            
+        }
+    }    
+
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: App.$text-light;
+        padding: 0.5rem 1rem;
+        margin: 0;
+        border-radius: 0.5rem;
+        font-size: 1.4rem;
+
+        & svg {
+            font-size: 1.6rem;
+        }
+
+        &:hover {
+            background: App.$secondary-dark-h;
+        }
+
+        &:active {
+            background: App.$primary-h;
+        }
+    }    
+}

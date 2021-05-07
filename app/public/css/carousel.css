@@ -1,0 +1,61 @@
+.carousel {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.carousel .carousel-item {
+  padding: 0;
+  margin: 0;
+  display: none;
+  transition: transform 1.25s ease-in-out;
+  width: 100%;
+}
+.carousel .carousel-item * {
+  display: block;
+  width: 100%;
+}
+.carousel .carousel-item.active, .carousel .carousel-item.next, .carousel .carousel-item.prev {
+  display: block;
+}
+.carousel .carousel-item.next {
+  position: absolute;
+  top: 0;
+  transform: translateX(100%);
+}
+.carousel .carousel-item.prev {
+  position: absolute;
+  top: 0;
+  transform: translateX(-100%);
+}
+.carousel .prev-btn,
+.carousel .next-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  color: white;
+  top: 0;
+  height: 100%;
+  padding: 0 40px;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+  cursor: pointer;
+  font-size: 35px;
+}
+.carousel .prev-btn:hover,
+.carousel .next-btn:hover {
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
+}
+.carousel .prev-btn {
+  left: 0px;
+  text-shadow: 3px 0px 5px black;
+}
+.carousel .next-btn {
+  right: 0px;
+  text-shadow: -3px 0px 5px black;
+}
+
+/*# sourceMappingURL=carousel.css.map */

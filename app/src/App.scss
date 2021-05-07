@@ -1,0 +1,148 @@
+$primary: #86c232;
+$primary-l: #95d639;
+$primary-h: #6c9c28;
+$accent: #61892f;
+$secondary: #474b4f;
+$secondary-l: #626669;
+$secondary-h: #34373a;
+$secondary-dark: #31353a;
+$secondary-dark-l: #353a3f;
+$secondary-dark-h: #292e31;
+$secondary-darker: #23282b;
+$secondary-darker-l: #272c30;
+$secondary-darker-h: #171b1d;
+$secondary-light: #74787a;
+$secondary-light-l: #868b8d;
+$secondary-light-h: #636769;
+$text-light: #deeec7;
+$text-light-h: #c3d8a6;
+$text-light2: #5b5d5f;
+$text-secondary: #86c232;
+$text-secondary-l: #9ddd43;
+$text-secondary-h: #74aa29;
+$black50: rgba(0, 0, 0, 0.5);
+
+$font-tiny: 12px;
+$font-small: 14px;
+$font-normal: 18px;
+$font-big: 20px;
+$font-jumbo: 32px;
+
+$font-bold: 900;
+
+:root {
+    --primary: #{$primary};
+    --accent: #{$accent};
+    --secondary: #{$secondary};
+    --secondary-l: #{$secondary-l};
+    --text-light: #{$text-light};
+    --text-light2: #{$text-light2};
+    --secondary-light: #{$secondary-light};
+    --secondary-light-l: #{$secondary-light-l};
+}
+
+@mixin no-list-style {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@mixin no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+#root {
+    height: 100vh;
+}
+
+.plus-btn {
+    margin: auto;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    color: $text-secondary;
+    cursor: pointer;
+
+    &:hover:not(.disabled) {
+        color: $text-secondary-l;
+    }
+
+    &:active:not(.disabled) {
+        color: $text-secondary-h;
+    }
+
+    &.disabled {
+        color: $text-light2;
+    }
+}
+
+@mixin common-btn {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0.5rem;
+    color: $text-light;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.primary-btn {
+    @include common-btn();
+    background: $primary;
+
+    &:hover {
+        background: $primary-l;
+    }
+
+    &:active {
+        background: $primary-h;
+    }
+}
+
+.secondary-light-btn {
+    @include common-btn();
+    background: $secondary-light;
+
+    &:hover {
+        background: $secondary-light-l;
+    }
+
+    &:active {
+        background: $secondary-light-h;
+    }
+}
+
+.icon-btn {
+    padding: 0;
+    margin: 0;
+    background: none;
+    cursor: pointer;
+    color: $text-light;
+    font-size: $font-normal;
+
+    & span {
+        outline: $text-light-h;
+    }
+
+    & svg {
+        fill: $text-light;
+        stroke: $text-light;
+    }
+
+    &:hover {
+        outline: $text-light-h;
+        color: $text-light-h;
+
+        & svg {
+            fill: $text-light-h;
+            stroke: $text-light-h;
+        }
+    }
+}

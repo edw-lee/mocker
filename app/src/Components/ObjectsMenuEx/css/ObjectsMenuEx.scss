@@ -1,0 +1,49 @@
+@use '../../../App.scss';
+@use '../../LeftMenu/css/LeftMenu.scss';
+
+.cmpnt-grp-lbl {
+    color: App.$text-light;
+    background: App.$secondary-l;
+    padding: 0.5rem 1rem;      
+    text-align: left;
+    font-weight: App.$font-bold; 
+}
+
+.cmpnt-grp {    
+    display: flex;
+    flex-wrap: wrap;    
+    margin: 0.5rem 0;
+}
+
+.cmpnt-icon-grp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 6rem; 
+    white-space: pre-line;           
+    text-align: center;    
+    margin: 0.5rem 0;
+    margin-left: 0.5rem;    
+    color: App.$text-light-h;    
+    cursor: pointer;    
+
+    &:hover {
+        color: App.$text-light;
+    }
+}
+
+.cmpnt-icon {  
+    display: flex;
+    justify-content: center;
+    align-items: center;      
+    font-size: 1.5rem;   
+    padding: 0;
+    margin: 0; 
+
+    & svg {      
+        display: flex;                     
+        font-size: 1.8rem;    
+        margin: auto;                  
+    }
+}
