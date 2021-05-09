@@ -18,16 +18,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //For production
-app.use(express.static(path.join(__dirname, '../app/build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/', rootrouter);
-
 
 mongoose.connect(process.env.DB_CONNSTR, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(_ => console.log('Connected to MockerDB'))
     .catch(e => console.log('Failed to connect to MockerDB: ', e));
 
-const server = app.listen(5000).on('listening', () => { console.log('Listening to port 5000') });
+const server = app.listen(process.env.PORT).on('listening', () => { console.log(`Listening to port ${process.env.PORT}`) });
 
 //For port in used issue with nodemon
 process.once('SIGHUP', function () {

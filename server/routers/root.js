@@ -6,11 +6,6 @@ const { resolve } = require('path');
 
 const router = express.Router();
 
-//Send the app index.html in the React build folder
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../app/build/index.html'));
-});
-
 //This is called when user login, it will create a new user in the database if it does not exist
 //This does not set the login session of the user, that is handled by Google API
 router.post('/login', (req, res) => {
@@ -43,7 +38,7 @@ router.post('/login', (req, res) => {
 
 router.get('/readpublicdir', (req, res) => {
     let { dir } = req.query;
-    dir = path.join(__dirname, `../../${process.env.APP_FOLDER}/public/${dir}`);    
+    dir = path.join(__dirname, `../build/${dir}`);    
 
     if (dir) {
         const getFiles = async (_dir) => {        
