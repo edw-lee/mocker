@@ -60,7 +60,7 @@ export default function Carousel({ updateObjectsProps, getSelectedCommonProp }) 
                     
                     return (
                         <div key={slideKey} className={className}>
-                            <img key={imgKey} src={url} draggable={false} />
+                            <img key={imgKey} src={url} draggable={false} alt={url}/>
                         </div>
                     );
                 });

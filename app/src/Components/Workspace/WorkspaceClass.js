@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { Workspace } from './Workspace';
 import * as IDBPageManager from '../../Managers/IDB/IDBPageManager'
 import { getGoogleFontsUrl } from '../../Functions/Common';
-import { createKeyId } from '../../Functions/ObjectProcessor';
 import { connect } from 'react-redux'
 import { addObjects, deselectAll, deselectObject, replaceObjects, selectObject, selectOneObject, setCurrentPage, updateOneObject } from '../../Redux/Workspace/WorkspaceActions'
 import { findNearestObj } from './WorkspaceDistFunctions';
@@ -11,8 +10,8 @@ import { getAllSelected, move } from './WorkspaceMoveFunctions';
 import { checkDoubleClick } from './WorkspaceClickFunctions';
 
 
-const DRAGBOX_ID = 'dragbox';
-const DRAGBOX_KEY = createKeyId('dragbox');
+// const DRAGBOX_ID = 'dragbox';
+// const DRAGBOX_KEY = createKeyId('dragbox');
 
 export const POSITION = { BEFORE: 0, INSIDE: 1, AFTER: 2 }
 
@@ -65,7 +64,7 @@ class WorkspaceClass extends React.Component {
         if (!this.container) return;
 
         var { objects, selectedIds } = this.props;
-        const { hoverId, dragPos, isDragging } = this.state;
+        const { hoverId, isDragging } = this.state;
 
         //Add highlight to selected objects
         const addSelectorBox = _objects => {
@@ -355,7 +354,7 @@ class WorkspaceClass extends React.Component {
 
         const _delete = objects => objects.map(obj => {
             if (selectedIds.includes(obj.props['data-id']))
-                return;
+                return null;
 
             let objChildren = obj.props.children;
             if (objChildren) {
@@ -365,7 +364,7 @@ class WorkspaceClass extends React.Component {
                     if (children !== objChildren)
                         return React.createElement(obj.type, { ...obj.props, key: obj.key, children });
                 } else if (objChildren.props && selectedIds.includes(objChildren.props['data-id']))
-                    return;
+                    return null;
             }
 
             return obj;

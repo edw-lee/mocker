@@ -22,9 +22,9 @@ class HierarchyMenuExClass extends React.Component {
 
                                 {children && <ul key={createKeyId('ul')}>{children}</ul>}
                             </li>; 
-                        else if(children)
+                        else
                             return children;
-                    });
+                    }).filter(obj => obj !== null); //Filters out null children
                 }
             }
 

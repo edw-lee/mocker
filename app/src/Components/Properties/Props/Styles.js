@@ -34,7 +34,7 @@ export default function Styles({ updateObjectsProps, getSelectedCommonProp }) {
     useEffect(_ => {
         if (selectedOpacity !== undefined)
             setOpacity(selectedOpacity * 100)
-    }, [selectedOpacity])
+    }, [selectedOpacity]);
 
     return (
         <PropsBox title='Styles'>

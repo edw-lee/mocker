@@ -8,7 +8,7 @@ const defaultUnit = 'px';
 function parseValue(value) {
     let val = Number.parseFloat(value);
 
-    if (!val || Number.isNaN(val))
+    if (!value.length || Number.isNaN(val))
         return '';
 
     val = val.toString();
@@ -20,14 +20,19 @@ function parseValue(value) {
     return `${val}${unit}`;
 }
 
-export default function UnitInput({ style, placeholder, selectedValue, onValueChanged, title}) {
+export default function UnitInput({ style, placeholder, selectedValue, onValueChanged, title }) {
     const [value, setValue] = useState(parseValue(selectedValue));
     const [_placeholder, setPlaceholder] = useState(placeholder);
 
     const onChange = e => {
         setValue(e.target.value);
     }
-    
+
+    const onBlur = val => {
+        if (onValueChanged && typeof (selectedValue) !== 'undefined')
+            onValueChanged(val);
+    }
+
     useEffect(_ => {
         if (typeof (selectedValue) !== 'undefined') {
             setValue(selectedValue);
@@ -37,17 +42,12 @@ export default function UnitInput({ style, placeholder, selectedValue, onValueCh
             setValue('');
             setPlaceholder('-')
         }
-    }, [selectedValue]);
-
-    useEffect(_ => {        
-        if (onValueChanged && typeof (selectedValue) !== 'undefined')
-            onValueChanged(value);
-    }, [value]);
+    }, [selectedValue, placeholder]);
 
     return (
         <input style={style} placeholder={_placeholder} value={value}
-            onBlur={e => setValue(parseValue(e.target.value))}
+            onBlur={e => onBlur(parseValue(e.target.value))}
             onFocus={e => setValue(parseValue(e.target.value))}
-            onChange={onChange} title={title}/>
+            onChange={onChange} title={title} />
     )
 }

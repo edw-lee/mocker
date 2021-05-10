@@ -73,7 +73,7 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
 
         setPos({ x, y });
         setOpacity(1);
-    }, [])
+    }, [dialogboxRef, overlayRef]);
 
     /**
      * @param {React.KeyboardEvent} e 

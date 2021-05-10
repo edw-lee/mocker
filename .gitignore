@@ -1,4 +1,5 @@
 *.svg
+*.code-workspace
 */node_modules
 */.env
 */.vscode

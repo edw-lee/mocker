@@ -12,7 +12,7 @@ import { login, logout } from '../../Redux/MenuBar/MenuBarActions'
 import { createNewPage, deleteAllPages, getAllPages } from '../../Managers/IDB/IDBPageManager';
 import { redo, setCurrentPage, undo } from '../../Redux/Workspace/WorkspaceActions';
 import SaveLoadDialog from './SaveLoadDialog';
-import { blobToBase64, createHTML, download, getFileNamesFromPublic, sendXMLRequest } from '../../Functions/Common';
+import { createHTML, download, getFileNamesFromPublic, sendXMLRequest } from '../../Functions/Common';
 import { toggleLoadState, setProjectName } from '../../Redux/Editor/EditorActions';
 import JSZip from 'jszip';
 import { getProjectName, updateProjectName as IDBUpdateProjectName } from '../../Managers/IDB/IDBProjectManager';

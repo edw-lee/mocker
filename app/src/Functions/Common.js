@@ -142,7 +142,7 @@ export function sendXMLRequest(url, success, failure, responseType = 'blob') {
     req.onreadystatechange = _ => {
         if (req.readyState === XMLHttpRequest.DONE) {
             const status = req.status;
-            if (status === 0 || status >= 200 && status < 400)
+            if (status === 0 || (status >= 200 && status < 400))
                 success(req.response)
             else
                 failure(req.responseText);

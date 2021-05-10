@@ -5,7 +5,7 @@ export const getStyle = (obj, styleProp, defaultValue = '') => {
         return;
 
     if (!obj.props.style || !obj.props.style[styleProp] || 
-        typeof(obj.props.style[styleProp]) === 'string' && !obj.props.style[styleProp])
+        (typeof(obj.props.style[styleProp]) === 'string' && !obj.props.style[styleProp]))
         return defaultValue;
         
     return obj.props.style[styleProp];

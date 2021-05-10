@@ -6,7 +6,7 @@ export default function CarouselObject({ urls }) {
 
         return (
             <div key={createKeyId('carousel-item')} className={className}>
-                <img key={createKeyId('img')} src={url} draggable={false} />
+                <img key={createKeyId('img')} src={url} draggable={false} alt={url}/>
             </div>
         );
     });
