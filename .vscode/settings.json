@@ -8,7 +8,6 @@
         "!server",
         "!app/build",
         ".git{, /**}"
-    ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/8a8cbfcc-92b3-4074-9f89-ec1c5f8b3179/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/mocker-io",
+    ],    
     "appService.deploySubpath": "."
 }

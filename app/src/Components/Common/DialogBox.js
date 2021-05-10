@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './css/DialogBox.scss'
 
 export const dialogBoxType = {
@@ -57,9 +57,7 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
 
     }, [overlayRef]);
 
-    //Set the position of the dialog box on component mount
-    //Set the display to block (it was initially set to none to prevent flickering when the position is updated)
-    useEffect(() => {
+    const initPos = useCallback(_ => {
         /**@type{HTMLElement} */
         const dialogbox = dialogboxRef.current;
         /**@type{HTMLElement} */
@@ -74,6 +72,11 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
         setPos({ x, y });
         setOpacity(1);
     }, [dialogboxRef, overlayRef]);
+
+    //Set the position of the dialog box on component mount
+    //Set the display to block (it was initially set to none to prevent flickering when the position is updated)
+    // eslint-disable-next-line
+    useEffect(() => initPos(), []);
 
     /**
      * @param {React.KeyboardEvent} e 

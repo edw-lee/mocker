@@ -1,3 +1,5 @@
+import { getBackendUrl } from "../../Functions/Common";
+
 const DEV_KEY = process.env.REACT_APP_DEV_KEY;
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const APP_ID = process.env.REACT_APP_APP_ID;
@@ -51,7 +53,7 @@ function handleSignInStatus(isSignedIn) {
             oAuthToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
             
             //To register new user if it was not registered
-            fetch(`${process.env.REACT_APP_BACKENDURL}/login`, {
+            fetch(`${getBackendUrl()}/login`, {
                 method: 'POST',
                 body: JSON.stringify({ user: resp.user }),
                 headers: { 'Content-Type': 'application/json' }

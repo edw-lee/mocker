@@ -157,7 +157,7 @@ export function sendXMLRequest(url, success, failure, responseType = 'blob') {
 
 export function getFileNamesFromPublic(dir, filter) {
     return new Promise((resolve, reject) => {
-        fetch(`${process.env.REACT_APP_BACKENDURL}/readpublicdir?dir=${dir}`)
+        fetch(`${getBackendUrl()}/readpublicdir?dir=${dir}`)
             .then(resp => resp.json())
             .then(resp => {
                 if (resp.files) {
@@ -174,15 +174,21 @@ export function getFileNamesFromPublic(dir, filter) {
     });
 }
 
+export function getBackendUrl() {
+    if (process.env.NODE_ENV === 'production')
+        return process.env.REACT_APP_BACKENDURL_PROD;
+    else
+        return process.env.REACT_APP_BACKENDURL;
+}
+
 /** 
  * @param {Blob} blob 
  */
-export function blobToBase64(blob)
-{
+export function blobToBase64(blob) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onerror = e => reject('Failed to convert blob to base64.');
-        reader.onloadend = _ => resolve(reader.result);        
+        reader.onloadend = _ => resolve(reader.result);
     });
 }
