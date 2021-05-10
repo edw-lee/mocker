@@ -28,6 +28,7 @@ mongoose.connect(process.env.DB_CONNSTR, { useNewUrlParser: true, useUnifiedTopo
   .then(_ => console.log('Connected to MockerDB'))
   .catch(e => console.log('Failed to connect to MockerDB: ', e));
 
+//TODO: Try deploying to mocker-dev.azurewebsites.net
 const serverPort = process.env.NODE_ENV == 'production' ? process.env.PORT_PROD : process.env.PORT_DEV;
 const server = app.listen(serverPort).on('listening', () => { console.log(`Listening to port ${serverPort}`) });
 
