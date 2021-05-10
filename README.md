@@ -1,15 +1,15 @@
 # Mocker
 
-### Introduction
+#### Introduction
 Mocker is a website builder that allows users to build website without writing any HTML, CSS or Javascript.
 
-### Status: In-progress
+#### Status: In-progress
 
-### Version: 0.0.0
+#### Version: 0.0.0
 
-### Demo: https://mocker-io.azurewebsites.net/
+#### Demo: https://mocker-io.azurewebsites.net/
 
-### Completed Features:
+#### Completed Features:
 <ol>    
     <li>
         Added the following page objects:
@@ -51,7 +51,7 @@ Mocker is a website builder that allows users to build website without writing a
     <li>Undo and redo</li>    
 </ol>
 
-### In-progress Features:
+#### In-progress Features:
 <ol>
     <li>Drag and drop page objects from panel to page</li>
     <li>Delete objects in hierarchy</li>
@@ -60,7 +60,7 @@ Mocker is a website builder that allows users to build website without writing a
     <li>Remove pages</li>    
 </ol>
 
-### Features to Add:
+#### Features to Add:
 <ol>
     <li>
         Page objects to add:
@@ -79,7 +79,7 @@ Mocker is a website builder that allows users to build website without writing a
     <li>Link to Google Spreadsheet</li>
 </ol>
 
-### Technical Information
+#### Technical Information
 <ul>
     <li>Runtime Environment: Node.js v14.16.0</li>
     <li>Frontend Libary: React JS</li>
