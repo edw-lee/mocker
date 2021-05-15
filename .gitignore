@@ -1,6 +1,6 @@
 *.svg
 node_modules
-*/.env
+*/.env.*
 */.vscode
 */package-lock.json
 package-lock.json
@@ -21,11 +21,8 @@ package-lock.json
 
 # misc
 *.DS_Store
-*.env.local
-*.env.development.local
-*.env.test.local
-*.env.production.local
 *.env
+*.env.*
 *.eslintcache
 
 */npm-debug.log*

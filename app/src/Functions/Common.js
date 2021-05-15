@@ -157,7 +157,7 @@ export function sendXMLRequest(url, success, failure, responseType = 'blob') {
 
 export function getFileNamesFromPublic(dir, filter) {
     return new Promise((resolve, reject) => {
-        fetch(`${getBackendUrl()}/readpublicdir?dir=${dir}`)
+        fetch(`${process.env.REACT_APP_BACKENDURL}/readpublicdir?dir=${dir}`)
             .then(resp => resp.json())
             .then(resp => {
                 if (resp.files) {
@@ -172,13 +172,6 @@ export function getFileNamesFromPublic(dir, filter) {
             })
             .catch(err => reject(err));
     });
-}
-
-export function getBackendUrl() {
-    if (process.env.NODE_ENV === 'production')
-        return process.env.REACT_APP_BACKENDURL_PROD;
-    else
-        return process.env.REACT_APP_BACKENDURL;
 }
 
 /** 

@@ -1,7 +1,7 @@
 import React from 'react';
 //eslint-disable-next-line
 import { RadioAndListDialog } from '../Common/RadioAndListDialog'
-import { getBackendUrl, getRandom64 } from '../../Functions/Common';
+import { getRandom64 } from '../../Functions/Common';
 import { createKeyId } from '../../Functions/ObjectProcessor';
 import { RadioButtonGroup } from '../Common/RadioButtonGroup';
 import CreateFormDialog from './Dialogs/CreateFormDialog';
@@ -146,7 +146,7 @@ export function createForm(addObjects, showDialogBox) {
             if (selectedSheetValue) {
                 getSheet(formDialog.getSelectedSheet()).then(sheet => {
                     const columns = sheet.valueRanges[0].values[0];
-                    addObjects(<Objects.FormObject action={`${getBackendUrl()}/googlesheet/${formType.toLowerCase()}/${selectedSheetValue}`}
+                    addObjects(<Objects.FormObject action={`${process.env.REACT_APP_BACKENDURL}/googlesheet/${formType.toLowerCase()}/${selectedSheetValue}`}
                         columns={columns} formType={formType} data-objtype={OBJ_TYPES.form} />)
                 }).catch(e => {
                     console.log(e);
