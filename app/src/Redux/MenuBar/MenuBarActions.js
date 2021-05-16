@@ -7,7 +7,7 @@ const login = user => {
     }
 }
 
-const logout = _ => {
+const logout = ()=> {
     return {
         type: LOGOUT
     }

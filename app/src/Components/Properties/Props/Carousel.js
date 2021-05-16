@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { createKeyId } from "../../../Functions/ObjectProcessor";
-import { RadioAndListDialog } from "../../Common/RadioAndListDialog";
+import RadioAndListDialog from "../../Common/RadioAndListDialog";
 import PropsBox from "../PropsBox";
 
 export default function Carousel({ updateObjectsProps, getSelectedCommonProp }) {

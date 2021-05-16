@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './css/BorderStyleSelector.scss'
 
-const borderStyleArr = ['', 'none', 'solid', 'dotted', 'dashed', 'double', 'groove', 'ridge', 'inset', 'outset'];
+export const borderStyleArr = ['', 'none', 'solid', 'dotted', 'dashed', 'double', 'groove', 'ridge', 'inset', 'outset'];
 
 export default function BorderStyleSelector({ selectedBorderStyle, onBorderStyleChanged }) {
     const selectorRef = useRef();
@@ -15,7 +15,7 @@ export default function BorderStyleSelector({ selectedBorderStyle, onBorderStyle
     let optRectHeight = useRef();
 
 
-    useEffect(_ => {
+    useEffect(()=> {
         //Calculate the top offset of the options rect
         //This has to be calculated whenever the selectedBorderStyle changes because that includes when the selected object changes
         const selectorOptions = selectorOptionsRef.current;
@@ -25,7 +25,7 @@ export default function BorderStyleSelector({ selectedBorderStyle, onBorderStyle
             optRectHeight.current = selectorOptRect.height;           
     }, []);
 
-    useEffect(_ => {
+    useEffect(()=> {
         setBorderStyle(selectedBorderStyle);
         setHoveredStyle(selectedBorderStyle);         
         
@@ -45,7 +45,7 @@ export default function BorderStyleSelector({ selectedBorderStyle, onBorderStyle
     }, [selectedBorderStyle]);
     
     
-    const toggleOpacity = _ => {
+    const toggleShow = ()=> {
         const isShow = opacity === 1;
         setOpacity(isShow ? 0 : 1);
         setDisplay(isShow ? 'none' : '');
@@ -60,15 +60,18 @@ export default function BorderStyleSelector({ selectedBorderStyle, onBorderStyle
 
     window.onclick = e => {
         if (e.target !== selectorRef.current)
+        {
             setOpacity(0);
+            setDisplay('none');   
+        }            
     }
 
     const borderStylesOpts = borderStyleArr.map(_borderStyle => {
         const className = _borderStyle === hoveredStyle ? 'selected' : '';
         return (
-            <div className={className}
-                onMouseOver={_ => setHoveredStyle(_borderStyle)}
-                onClick={_ => selectBorder(_borderStyle)}
+            <div data-testid={`borderStyleOption-${_borderStyle}`} className={className}
+                onMouseOver={()=> setHoveredStyle(_borderStyle)}
+                onClick={()=> selectBorder(_borderStyle)}
                 title={_borderStyle}
                 key={_borderStyle}>
                 <div style={{ borderStyle: _borderStyle }}>
@@ -81,8 +84,8 @@ export default function BorderStyleSelector({ selectedBorderStyle, onBorderStyle
 
 
     return (
-        <div className='borderstyle-selector'>
-            <div className='borderstyle-optbtn' onClick={toggleOpacity} ref={selectorRef}>
+        <div data-testid='borderStyleSelector' className='borderstyle-selector'>
+            <div data-testid='borderStyleOptBtn' className='borderstyle-optbtn' onClick={toggleShow} ref={selectorRef}>
                 <div style={{ borderStyle }}>
                     {borderStyle === '' ? <span>{borderStyle !== undefined && 'Default'}</span> :
                         borderStyle === 'none' ? <span>No border</span> : ''
@@ -90,13 +93,13 @@ export default function BorderStyleSelector({ selectedBorderStyle, onBorderStyle
                 </div>
                 <i className='fas fa-chevron-down'></i>
             </div>
-            <div className={`borderstyle-options`}
+            <div data-testid='borderStyleOptions' className={`borderstyle-options`}
                 style={{ top: topOffset, display, opacity }}
                 ref={selectorOptionsRef}>
-                {borderStyle === undefined &&
-                    <div
+                {(borderStyle === undefined || !borderStyleArr.includes(borderStyle)) &&
+                    <div data-testid='borderStyleOption-undefined'
                         className={hoveredStyle === undefined ? 'selected' : ''}
-                        onMouseOver={_ => setHoveredStyle(undefined)}
+                        onMouseOver={()=> setHoveredStyle(undefined)}
                         key={'undefined'}>
                         <div style={{ padding: '5px' }}></div>
                     </div>

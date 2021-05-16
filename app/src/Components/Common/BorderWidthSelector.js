@@ -1,19 +1,20 @@
 import UndefinedSelector from "./UndefinedSelector";
 
-const borderWidthArr = ['thin', 'medium', 'thick'];
-const minWidthPx = 1;
-const maxWidthPx = 20;
+export const BORDER_WIDTH_ARR = ['thin', 'medium', 'thick'];
+const MIN_WIDTH_PX = 1;
+const MAX_WIDTH_PX = 20;
+
+for(let i = MIN_WIDTH_PX; i <= MAX_WIDTH_PX; i++)
+    BORDER_WIDTH_ARR.push(`${i}px`);
 
 export default function BorderWidthSelector({selectedWidth, onChange}) {
-    let borderWidthOptions = borderWidthArr.map(borderWidth => <option key={borderWidth}>{borderWidth}</option>)
-    
-    for (var i = minWidthPx; i <= maxWidthPx; i++) {
-        const width = `${i}px`;
-        borderWidthOptions.push(<option key={width}>{width}</option>);
-    }
+    let borderWidthOptions = BORDER_WIDTH_ARR.map(borderWidth => <option key={borderWidth}>{borderWidth}</option>)
+
+    if(selectedWidth && selectedWidth.length && !BORDER_WIDTH_ARR.includes(selectedWidth))
+        selectedWidth = undefined;
 
     return (
-        <UndefinedSelector selectedValue={selectedWidth} onChange={e => onChange(e.target.value)}>
+        <UndefinedSelector testId='borderWidthSelector' selectedValue={selectedWidth} onChange={e => onChange(e.target.value)}>
             {borderWidthOptions}
         </UndefinedSelector>
     );

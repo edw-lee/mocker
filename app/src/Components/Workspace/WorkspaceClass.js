@@ -128,7 +128,7 @@ class WorkspaceClass extends React.Component {
         // if (isDragging)
         //     objects.push(<span key={DRAGBOX_KEY} id={DRAGBOX_ID} style={{ position: 'absolute', left: dragPos.x, top: dragPos.y }}>{this.mouseDragObjs}</span>);
 
-        ReactDOM.render(objects, this.container, _ => {
+        ReactDOM.render(objects, this.container, ()=> {
             //Update the html document
             this.htmlDoc.dispatchEvent(new Event('update'));            
         });
@@ -188,7 +188,7 @@ class WorkspaceClass extends React.Component {
         });
     }
 
-    mouseDrag = _ => {
+    mouseDrag = ()=> {
         const { selectedIds } = this.props;
 
         const result = findNearestObj(this.props.objects, selectedIds, this.mousePos, this.container);
@@ -349,7 +349,7 @@ class WorkspaceClass extends React.Component {
             this.delete();
     }
 
-    delete = _ => {
+    delete = ()=> {
         const { selectedIds } = this.props;
 
         const _delete = objects => objects.map(obj => {
@@ -446,7 +446,7 @@ const mapDispatchToProps = dispatch => {
         selectOneObject: (dataid, objtype) => dispatch(selectOneObject(dataid, objtype)),
         selectObject: (dataid, objtype) => dispatch(selectObject(dataid, objtype)),
         deselectObject: (dataid, objtype) => dispatch(deselectObject(dataid, objtype)),
-        deselectAll: _ => dispatch(deselectAll())
+        deselectAll: ()=> dispatch(deselectAll())
     }
 }
 

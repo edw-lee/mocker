@@ -13,7 +13,7 @@ function ObjectsMenuEx({ addObjects, showDialogBox }) {
             if(object.hidden) return null
 
             return (
-                <div key={object.name} className='cmpnt-icon-grp' onClick={_ => object.create(addObjects, showDialogBox)}>
+                <div key={object.name} className='cmpnt-icon-grp' onClick={()=> object.create(addObjects, showDialogBox)}>
                     <div className='cmpnt-icon'>{object.icon}</div>
                     <div>{object.name}</div>
                 </div>

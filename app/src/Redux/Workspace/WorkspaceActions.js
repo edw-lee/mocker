@@ -62,19 +62,19 @@ export const deselectObject = (dataid, objtype) => {
     }
 }
 
-export const deselectAll = _ => {
+export const deselectAll = ()=> {
     return {
         type: DESELECT_ALL
     }
 }
 
-export const undo = _ => {
+export const undo = ()=> {
     return {
         type: UNDO
     }
 }
 
-export const redo = _ => {
+export const redo = ()=> {
     return {
         type: REDO
     }

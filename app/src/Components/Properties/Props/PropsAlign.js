@@ -58,29 +58,29 @@ export default function PropsAlignClass({ updateObjectsProps }) {
             <div className='props-title'>Align</div>
             <div className='props-row'>
                 <span className='props-btn-grp'>
-                    <button className='icon-btn' title='Align Right' onClick={_ => alignDistribute('h', 'flex-start')}>
+                    <button className='icon-btn' title='Align Right' onClick={()=> alignDistribute('h', 'flex-start')}>
                         <AlignDistributeIcon alignItems='flex-start' orientation='v' />
                     </button>
 
-                    <button className='icon-btn' title='Align Center' onClick={_ => alignDistribute('h', 'center')}>
+                    <button className='icon-btn' title='Align Center' onClick={()=> alignDistribute('h', 'center')}>
                         <AlignDistributeIcon alignItems='center' orientation='v' />
                     </button>
 
-                    <button className='icon-btn' title='Align Left' onClick={_ => alignDistribute('h', 'flex-end')}>
+                    <button className='icon-btn' title='Align Left' onClick={()=> alignDistribute('h', 'flex-end')}>
                         <AlignDistributeIcon alignItems='flex-end' orientation='v' />
                     </button>
                 </span>
 
                 <span className='props-btn-grp'>
-                    <button className='icon-btn' title='Align Top' onClick={_ => alignDistribute('v', 'flex-start')}>
+                    <button className='icon-btn' title='Align Top' onClick={()=> alignDistribute('v', 'flex-start')}>
                         <AlignDistributeIcon alignItems='flex-start' />
                     </button>
 
-                    <button className='icon-btn' title='Align Middle' onClick={_ => alignDistribute('v', 'center')}>
+                    <button className='icon-btn' title='Align Middle' onClick={()=> alignDistribute('v', 'center')}>
                         <AlignDistributeIcon alignItems='center' />
                     </button>
 
-                    <button className='icon-btn' title='Align Bottom' onClick={_ => alignDistribute('v', 'flex-end')}>
+                    <button className='icon-btn' title='Align Bottom' onClick={()=> alignDistribute('v', 'flex-end')}>
                         <AlignDistributeIcon alignItems='flex-end' />
                     </button>
                 </span>
@@ -89,29 +89,29 @@ export default function PropsAlignClass({ updateObjectsProps }) {
             <div className='props-title'>Distribute</div>
             <div className='props-row'>
                 <span className='props-btn-grp'>
-                    <button className='icon-btn' title='Horizontal Distribute Space Between' onClick={_ => alignDistribute('h', 'space-between')}>
+                    <button className='icon-btn' title='Horizontal Distribute Space Between' onClick={()=> alignDistribute('h', 'space-between')}>
                         <AlignDistributeIcon justifyContent='space-between' />
                     </button>
 
-                    <button className='icon-btn' title='Horizontal Distribute Space Around' onClick={_ => alignDistribute('h', 'space-around')}>
+                    <button className='icon-btn' title='Horizontal Distribute Space Around' onClick={()=> alignDistribute('h', 'space-around')}>
                         <AlignDistributeIcon justifyContent='space-around' />
                     </button>
 
-                    <button className='icon-btn' title='Horizontal Distribute Space Evenly' onClick={_ => alignDistribute('h', 'space-evenly')}>
+                    <button className='icon-btn' title='Horizontal Distribute Space Evenly' onClick={()=> alignDistribute('h', 'space-evenly')}>
                         <AlignDistributeIcon justifyContent='space-evenly' />
                     </button>
                 </span>
 
                 <span className='props-btn-grp'>
-                    <button className='icon-btn' title='Vertical Distribute Space Between' onClick={_ => alignDistribute('v', 'space-between')}>
+                    <button className='icon-btn' title='Vertical Distribute Space Between' onClick={()=> alignDistribute('v', 'space-between')}>
                         <AlignDistributeIcon justifyContent='space-between' orientation='v' />
                     </button>
 
-                    <button className='icon-btn' title='Vertical Distribute Space Around' onClick={_ => alignDistribute('v', 'space-around')}>
+                    <button className='icon-btn' title='Vertical Distribute Space Around' onClick={()=> alignDistribute('v', 'space-around')}>
                         <AlignDistributeIcon justifyContent='space-around' orientation='v' />
                     </button>
 
-                    <button className='icon-btn' title='Vertical Distribute Space Evenly' onClick={_ => alignDistribute('v', 'space-evenly')}>
+                    <button className='icon-btn' title='Vertical Distribute Space Evenly' onClick={()=> alignDistribute('v', 'space-evenly')}>
                         <AlignDistributeIcon justifyContent='space-evenly' orientation='v' />
                     </button>
                 </span>

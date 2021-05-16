@@ -11,7 +11,7 @@ const fontFamilyOpts = Object.keys(fontFamilies).map(fontFamily => {
 
 export default function FontSelector({ className, onChange, selectedFontFamily }) {
     return (
-        <UndefinedSelector className={className} onChange={onChange} selectedValue={selectedFontFamily}
+        <UndefinedSelector testId='fontSelector' className={className} onChange={onChange} selectedValue={selectedFontFamily}
             defaultValue={''}>
             {fontFamilyOpts}
         </UndefinedSelector>

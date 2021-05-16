@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledRadioGroupClass } from "./StyledRadioGroupClass";
+import StyledRadioGroup from "./StyledRadioGroup";
 
 /**@type{React.CSSProperties}*/
 const inputStyle = {
@@ -14,15 +14,14 @@ const containerStyle = {
     flexDirection: 'column'
 }
 
-export class RadioAndListDialog extends React.Component {
-    radioRef = React.createRef();
-
+export default class RadioAndListDialog extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             items: props.items ? props.items : [],
             newItem: '',
+            radioValue: props.checkedValue
         }
     }
 
@@ -60,19 +59,20 @@ export class RadioAndListDialog extends React.Component {
         this.setState({ newItem: '' });
     }
 
-    getOption() {
-        return this.radioRef.current.getOption();
+    getRadioValue() {
+        return this.state.radioValue;
     }
 
     render() {
         const { newItem } = this.state;
+        const { labels, values, placeholder, checkedValue } = this.props;
 
         var inputs = this.state.items.map((item, idx) => {
             return (
                 <div key={`div-${idx}`} style={{ display: 'flex' }}>
                     <input style={inputStyle} value={item} onChange={e => this.updateItem(e.target.value, idx)} onBlur={e => this.onBlur(e, idx)} />
                     <button className='icon-btn'
-                        onClick={_ => { this.removeItem(idx) }}>
+                        onClick={() => { this.removeItem(idx) }}>
                         <i className='fas fa-times'></i>
                     </button>
                 </div>
@@ -80,17 +80,17 @@ export class RadioAndListDialog extends React.Component {
         });
 
         return (
-            <div style={containerStyle}>
-                {this.props.labels && this.props.labels.length > 1 &&
-                    <StyledRadioGroupClass ref={this.radioRef} labels={this.props.labels} values={this.props.values} name='radiolist-option'
-                        checkedValue={this.props.checkedValue} />}
+            <div data-testid='radioAndListDialog' style={containerStyle}>
+                {labels && labels.length > 1 &&
+                    <StyledRadioGroup ref={this.radioRef} labels={labels} values={values} name='radiolist-option'
+                        checkedValue={checkedValue} onChange={e => this.setState({ radioValue: e.target.value })} />}
 
                 {inputs}
 
-                <input style={inputStyle} autoFocus={true} placeholder={this.props.placeholder} value={newItem}
+                <input data-testid='radioAndListDialog-Input' style={inputStyle} autoFocus={true} placeholder={placeholder} value={newItem}
                     onChange={(e) => this.setState({ newItem: e.target.value })} />
 
-                {<i className={`fas fa-plus-circle plus-btn ${!newItem ? 'disabled' : ''}`}
+                {<i data-testid='radioAndListDialog-AddBtn' className={`fas fa-plus-circle plus-btn ${!newItem ? 'disabled' : ''}`}
                     onClick={() => {
                         if (newItem)
                             this.addItem(newItem)

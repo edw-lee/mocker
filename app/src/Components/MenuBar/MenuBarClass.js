@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuList } from '../Common'
+import MenuList from '../Common/MenuList'
 import './css/MenuBar.scss'
 import * as GoogleDrive from '../../Managers/GoogleAPIs/GoogleDrive'
 import { createKeyId } from '../../Functions/ObjectProcessor'
@@ -31,32 +31,32 @@ class MenuBarClass extends React.Component {
         {
             title: 'New Project',
             display: <i className='far fa-file'></i>,
-            function: _ => this.newProject()
+            function: ()=> this.newProject()
         },
         {
             title: 'Open Project',
             display: <i className='far fa-folder-open'></i>,
-            function: _ => this.openProject()
+            function: ()=> this.openProject()
         },
         {
             title: 'Save Project',
             display: <i className='far fa-save'></i>,
-            function: _ => this.saveProject()
+            function: ()=> this.saveProject()
         },
         {
             title: 'Export to HTML',
             display: <i className='fas fa-file-code'></i>,
-            function: _ => this.export()
+            function: ()=> this.export()
         },
         {
             title: 'Undo',
             display: <Undo />,
-            function: _ => this.props.undo()
+            function: ()=> this.props.undo()
         },
         {
             title: 'Redo',
             display: <Redo />,
-            function: _ => this.props.redo()
+            function: ()=> this.props.redo()
         }
     ];
 
@@ -122,14 +122,14 @@ class MenuBarClass extends React.Component {
         this.props.showDialogBox({
             id: dialogBoxId,
             title: title,
-            msg: <SaveLoadDialog closeDialogBox={_ => this.props.closeDialogBox(dialogBoxId)}
+            msg: <SaveLoadDialog closeDialogBox={()=> this.props.closeDialogBox(dialogBoxId)}
                 localCallback={localCallback} driveCallback={driveCallback} isLoadLocalFile={isLoadLocalFile} />,
             showOk: false,
             showCancel: false
         });
     }
 
-    saveProject = _ => {
+    saveProject = ()=> {
         const { projectName } = this.props;
 
         const createContentBlob = pages => new Blob(
@@ -138,7 +138,7 @@ class MenuBarClass extends React.Component {
             { type: 'application/octet-stream' }
         );
 
-        const saveToDrive = _ => {
+        const saveToDrive = ()=> {
             this.props.toggleLoadState(true);
 
             const failedToSave = e => {
@@ -154,7 +154,7 @@ class MenuBarClass extends React.Component {
             getAllPages().then(pages => {
                 const blob = createContentBlob(pages);
                 GoogleDrive.updloadBlobToDrive(blob, `${projectName}.mock`, blob.type,
-                    _ => {
+                    ()=> {
                         this.props.showDialogBox({
                             title: 'Saved',
                             msg: 'Project has been successfully saved to Google Drive.',
@@ -166,19 +166,19 @@ class MenuBarClass extends React.Component {
             }).catch(e => failedToSave('Project failed to save to Google Drive.'));
         }
 
-        const saveToLocal = _ => {
+        const saveToLocal = ()=> {
             this.props.toggleLoadState(true);
 
             getAllPages().then(pages => {
                 download(createContentBlob(pages), `${projectName}.mock`);
             }).catch(e => console.log(e))
-                .finally(_ => this.props.toggleLoadState(false));
+                .finally(()=> this.props.toggleLoadState(false));
         }
 
         this.promptStorageDialog('Save Project', saveToLocal, saveToDrive);
     }
 
-    openProject = _ => {
+    openProject = ()=> {
         const loadPages = data => {
             this.props.toggleLoadState(true);
             //Convert the data back to JSON string and parse it
@@ -187,7 +187,7 @@ class MenuBarClass extends React.Component {
 
             //Delete old pages and set new pages with the loaded data
             if (pages && pages.length)
-                deleteAllPages().then(_ => {
+                deleteAllPages().then(()=> {
                     //Create new pages with loaded data
                     pages.forEach(page => createNewPage(page.name, page.objects));
                     //Set current page to the first page
@@ -200,7 +200,7 @@ class MenuBarClass extends React.Component {
             this.props.toggleLoadState(false);
         }
 
-        const openFromDrive = _ => {
+        const openFromDrive = ()=> {
             GoogleDrive.load(data => loadPages(data));
         }
 
@@ -224,15 +224,15 @@ class MenuBarClass extends React.Component {
         this.promptStorageDialog('Open Project', openFromLocal, openFromDrive, true);
     }
 
-    export = _ => {
+    export = ()=> {
         let timeout;
 
         const _export = downloadCallback => {
-            const resetTimeout = _ => {
+            const resetTimeout = ()=> {
                 if (timeout)
                     clearTimeout(timeout);
 
-                timeout = setTimeout(_ => {
+                timeout = setTimeout(()=> {
                     this.props.showDialogBox({
                         title: 'Export Timeout',
                         msg: 'Export timeout. Failed to generate export file. Please refresh and try again',
@@ -260,14 +260,14 @@ class MenuBarClass extends React.Component {
                 //To store all file names
                 const allFileNames = [];
 
-                const downloadZip = _ => {
+                const downloadZip = ()=> {
                     zip.generateAsync({ type: 'blob' })
                         .then(blob => downloadCallback(blob),
                             err => console.log(err));
                 }
 
                 //Add file and check if it is done            
-                const addFilesToZip = _ => {
+                const addFilesToZip = ()=> {
                     let fileCount = 0;
 
                     if (getFilesDoneFlags.every(flag => flag)) {
@@ -324,7 +324,7 @@ class MenuBarClass extends React.Component {
             });
         }
 
-        const exportToDrive = _ => {
+        const exportToDrive = ()=> {
             this.props.toggleLoadState(true);
 
             const completed = (title, msg) => {
@@ -336,13 +336,13 @@ class MenuBarClass extends React.Component {
 
             _export(blob => {
                 GoogleDrive.updloadBlobToDrive(blob, `${this.props.projectName}.zip`, blob.type,
-                    _ => completed('Export to Drive Successful', 'Project has been successfully exported to your Google Drive.'),
+                    ()=> completed('Export to Drive Successful', 'Project has been successfully exported to your Google Drive.'),
                     e => completed('Export to Drive Failed', e))
                     .catch(e => completed('Export to Drive Failed', e));
             });
         }
 
-        const exportToLocal = _ => {
+        const exportToLocal = ()=> {
             this.props.toggleLoadState(true);
 
             _export(blob => {
@@ -404,11 +404,11 @@ const mapDispatchToProps = dispatch => {
         showDialogBox: dialogbox => dispatch(showDialogBox(dialogbox, dispatch)),
         closeDialogBox: id => dispatch(closeDialogBox(id)),
         login: user => dispatch(login(user)),
-        logout: _ => dispatch(logout()),
+        logout: ()=> dispatch(logout()),
         setCurrentPage: currentPage => dispatch(setCurrentPage(currentPage)),
         setProjectName: projectName => dispatch(setProjectName(projectName)),
-        undo: _ => dispatch(undo()),
-        redo: _ => dispatch(redo())
+        undo: ()=> dispatch(undo()),
+        redo: ()=> dispatch(redo())
     }
 }
 

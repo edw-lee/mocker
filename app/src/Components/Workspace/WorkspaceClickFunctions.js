@@ -11,7 +11,7 @@ export const checkDoubleClick = (dataid, selectedIds, container, objects, double
     let timer = null;
     if (doubleClickCounter === 0) {
         setDoubleClickCounter(1);
-        timer = setTimeout(_ => setDoubleClickCounter(0), DOUBLECLICK_DELAY);
+        timer = setTimeout(()=> setDoubleClickCounter(0), DOUBLECLICK_DELAY);
         //If it is 1 and it has the same id as the previous selected id, then this is the second click so execute double click
     } else if (selectedIds.length && dataid === selectedIds[0]) {
         doubleClick(dataid, container, objects, setEditingFlag, updateOneObject);
@@ -47,7 +47,7 @@ export const doubleClick = (dataid, container, objects, setEditingFlag, updateOn
                 target.addEventListener('keydown', onEnter);
 
             //Reset states on blur
-            target.onblur = _ => {
+            target.onblur = ()=> {
                 setEditingFlag(false);
 
                 let idx = 0, object = null;

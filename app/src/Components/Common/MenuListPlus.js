@@ -1,13 +1,13 @@
 import React from 'react';
 import './css/MenuListPlus.scss'
 
-export function MenuListPlus(props) {
+export default function MenuListPlus({className, addFunction, children}) {
     return (
-        <div className={`menu-plus ${props.className}`}>
+        <div data-testid='menuListPlus' className={`menu-plus ${className}`}>
             <ul>
-                {props.children}
+                {children}
             </ul>
 
-            <i className="fas fa-plus-circle plus-btn" onClick={props.addFunction}></i>
+            <i data-testid='menuListPlusBtn' className="fas fa-plus-circle plus-btn" onClick={addFunction}></i>
         </div>);
 }

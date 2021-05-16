@@ -6,19 +6,6 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.5.0",
-    "@types/gapi": "0.0.39",
-    "@types/gapi.auth2": "0.0.52",
-    "@types/gapi.client": "^1.0.3",
-    "@types/gapi.client.drive": "^3.0.13",
-    "@types/gapi.client.sheets": "^4.0.20201029",
-    "@types/google.picker": "0.0.34",
-    "@types/jest": "^26.0.19",
-    "@types/node": "^12.19.8",
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.10",
     "babel-cli": "^6.18.0",
     "babel-preset-react-app": "^3.1.2",
     "dompurify": "^2.2.7",
@@ -36,6 +23,23 @@
     "sass": "^1.32.8",
     "typescript": "^4.1.2",
     "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
+    "@types/gapi": "0.0.39",
+    "@types/gapi.auth2": "0.0.52",
+    "@types/gapi.client": "^1.0.3",
+    "@types/gapi.client.drive": "^3.0.13",
+    "@types/gapi.client.sheets": "^4.0.20201029",
+    "@types/google.picker": "0.0.34",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^12.19.8",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "fake-indexeddb": "^3.1.2",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "env-cmd -f .env.dev.local react-scripts start & sass --watch src/Public/scss:public/css src/Public/workspace:public/workspace",
@@ -63,9 +67,6 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {
-    "redux-devtools-extension": "^2.13.8"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC"

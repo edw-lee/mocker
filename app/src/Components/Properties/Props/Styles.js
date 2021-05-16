@@ -20,18 +20,18 @@ export default function Styles({ updateObjectsProps, getSelectedCommonProp }) {
     const changeStyle = (styleProp, oldValue, newValue) => {
         if (oldValue === newValue) return;
 
-        updateObjectsProps(_ => createStyleObj(styleProp, newValue));
+        updateObjectsProps(()=> createStyleObj(styleProp, newValue));
     }
 
     const changeOpacity = opacity => {
         opacity = Math.min(Math.max(0, opacity), 100).toString().trim('0');
 
-        updateObjectsProps(_ => createStyleObj('opacity', opacity / 100.0));
+        updateObjectsProps(()=> createStyleObj('opacity', opacity / 100.0));
 
         setOpacity(opacity);
     }
 
-    useEffect(_ => {
+    useEffect(()=> {
         if (selectedOpacity !== undefined)
             setOpacity(selectedOpacity * 100)
     }, [selectedOpacity]);

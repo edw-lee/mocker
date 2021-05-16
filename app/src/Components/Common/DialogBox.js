@@ -5,8 +5,10 @@ export const dialogBoxType = {
     id: null, title: null, msg: null, okText: null, showOk: true, showCancel: true, cancelText: null, okFunction: null, cancelFunction: null,
     boxClass: null, titleclass: null, msgClass: null, btnGrpClass: null, okBtnClass: null, cancelBtnClass: null
 };
-
-export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, okFunction,
+/**  
+ * Note: To close the dialog box, check the DialogBoxActions.js closeDialogBox function.
+*/
+export default function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, okFunction,
     cancelFunction, boxClass, titleclass, msgClass, btnGrpClass, okBtnClass, cancelBtnClass }) {
 
     const overlayRef = React.createRef();
@@ -26,7 +28,7 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
     if (!cancelBtnClass) cancelBtnClass = 'dialogbox-cancel-btn';
     if (showCancel && !cancelText) cancelText = 'Cancel'
 
-    //Find the first text input to focus on so that the enter and escapde key will be fired
+    //Find the first text input to focus on so that the enter and escape key will be fired
     useEffect(() => {
         /**@type{HTMLElement} */
         let overlay = overlayRef.current;
@@ -57,7 +59,7 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
 
     }, [overlayRef]);
 
-    const initPos = useCallback(_ => {
+    const initPos = useCallback(() => {
         /**@type{HTMLElement} */
         const dialogbox = dialogboxRef.current;
         /**@type{HTMLElement} */
@@ -81,7 +83,7 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
     /**
      * @param {React.KeyboardEvent} e 
      */
-    const onKeyUp = (e) => {
+    const onKeyUp = (e) => {        
         if (showOk && e.key === 'Enter')
             validate(e);
         else if (e.key === 'Escape')
@@ -101,7 +103,7 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
     /**     
      * @param {React.MouseEvent} e 
      */
-    const onMouseDown = e => {
+    const onMouseDown = e => {        
         setPosOffset({ x: e.clientX - pos.x, y: e.clientY - pos.y });
         setIsDragging(true);
     }
@@ -109,8 +111,8 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
      * @param {React.MouseEvent} e 
      */
     const onMouseMove = e => {
-        if (isDragging)
-            setPos({ x: e.clientX - posOffset.x, y: e.clientY - posOffset.y });
+        if (isDragging)                    
+            setPos({ x: e.clientX - posOffset.x, y: e.clientY - posOffset.y });        
     }
     /**     
      * @param {React.MouseEvent} e 
@@ -120,23 +122,23 @@ export function DialogBox({ title, msg, okText, showOk, showCancel, cancelText, 
     }
 
     return (
-        <div className='dialogbox-overlay'
+        <div data-testid='dialogBox-Overlay' className='dialogbox-overlay'
             style={{ opacity }}
             onMouseMove={onMouseMove}
             onMouseUp={onMouseUp}
             tabIndex={0} ref={overlayRef} onKeyUp={(e) => onKeyUp(e)}>
-            <form className={boxClass} style={{ left: pos.x, top: pos.y }} onSubmit={onSubmit} ref={dialogboxRef}>
-                <div onMouseDown={onMouseDown} className={titleclass}>
+            <form data-testid='dialogBox' className={boxClass} style={{ left: pos.x, top: pos.y }} onSubmit={onSubmit} ref={dialogboxRef}>
+                <div data-testid='dialogBox-Title' onMouseDown={onMouseDown} className={titleclass}>
                     {title}
 
-                    <button type='button' onClick={cancelFunction} className='icon-btn close-btn'>
+                    <button data-testid='dialogBox-CloseBtn' type='button' onClick={cancelFunction} className='icon-btn close-btn'>
                         <i className='fas fa-times'></i>
                     </button>
                 </div>
-                <div className={msgClass}>{msg}</div>
-                <div className={btnGrpClass}>
-                    {showOk && <button type='submit' className={okBtnClass}>{okText}</button>}
-                    {showCancel && <button className={cancelBtnClass} onClick={cancelFunction}>{cancelText}</button>}
+                <div data-testid='dialogBox-Msg' className={msgClass}>{msg}</div>
+                <div data-testid='dialogBox-BtnGrp' className={btnGrpClass}>
+                    {showOk && <button data-testid='dialogBox-OkBtn' type='submit' className={okBtnClass}>{okText}</button>}
+                    {showCancel && <button data-testid='dialogBox-CancelBtn' type='button' className={cancelBtnClass} onClick={cancelFunction}>{cancelText}</button>}
                 </div>
             </form>
         </div>

@@ -44,7 +44,7 @@ function carouselNavivation(dir, carouselWrapper) {
 
                 //Remove the direction class that was added to the previous active slide
                 //and set the isNavigating flag to false
-                setTimeout(_ => {
+                setTimeout(()=> {
                     slide.className = slide.className.replace(dirClass, '').trim();
                     isNavigating = false;
                 }, CAROUSEL_DELAY);
@@ -69,7 +69,7 @@ function updateCarousels(carousels) {
 
         const carouselWrapper = carousel.getElementsByClassName('carousel-wrapper')[0];
 
-        prevBtn.onclick = _ => carouselNavivation('prev', carouselWrapper);
-        nextBtn.onclick = _ => carouselNavivation('next', carouselWrapper);
+        prevBtn.onclick = ()=> carouselNavivation('prev', carouselWrapper);
+        nextBtn.onclick = ()=> carouselNavivation('next', carouselWrapper);
     }    
 }

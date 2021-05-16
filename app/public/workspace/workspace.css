@@ -90,6 +90,10 @@
   stroke: #c3d8a6;
 }
 
+.toggle.on {
+  color: #86c232;
+}
+
 .plain-table {
   border: 1px solid;
   border-collapse: collapse;

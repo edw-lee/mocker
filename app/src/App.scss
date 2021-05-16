@@ -146,3 +146,9 @@ $font-bold: 900;
         }
     }
 }
+
+.toggle {
+    &.on {
+        color: $primary;
+    }
+}
