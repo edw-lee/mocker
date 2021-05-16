@@ -68,7 +68,7 @@ export const move = (objects, selectedObjs, nearestDataId, selectedIds, position
         const obj = nonselected[nearestIdx];
                 
         //If the nearest object is a layout object, it means that it has no children, so just put the selected objects as the children
-        if (obj.type === 'td' || obj.props['data-islayout'] && position === POSITION.INSIDE) {
+        if (obj.type === 'td' || (obj.props['data-islayout'] && position === POSITION.INSIDE)) {
             let children = obj.props.children;
 
             if (children) {

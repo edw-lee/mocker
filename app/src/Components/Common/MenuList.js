@@ -1,12 +1,12 @@
 import React from 'react';
 import './css/MenuList.scss';
 
-export function MenuList(props) {
-    const className = props.className? `menu-list ${props.className}` : 'menu-list'
+export default function MenuList({className, children}) {
+    const _className = className? `menu-list ${className}` : 'menu-list'
     return (
-        <div className={className}>            
+        <div data-testid='menuList' className={_className}>            
             <ul>
-                {props.children}
+                {children}
             </ul>
         </div>
     );

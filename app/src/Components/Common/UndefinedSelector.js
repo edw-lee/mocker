@@ -1,9 +1,12 @@
-export default function UndefinedSelector({ className, onChange, selectedValue, defaultValue = '', noDefault, children }) {
+export default function UndefinedSelector({ testId, className, onChange, selectedValue, defaultValue = '', noDefault, children }) {
     if (typeof (selectedValue) === 'undefined')
         selectedValue = 'undefined';
 
+    if(!onChange)
+        onChange = ()=>{};
+
     return (
-        <select className={className}
+        <select data-testid={testId} className={className}
             onChange={onChange}
             value={selectedValue}>
             {selectedValue === 'undefined' && <option value={'undefined'}></option>}

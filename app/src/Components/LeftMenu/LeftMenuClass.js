@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/LeftMenu.scss'
-import { MenuList } from '../Common'
+import MenuList from '../Common/MenuList'
 import LeftMenuExClass from './LeftMenuExClass'
 import LeftMenuItems from './LeftMenuItems'
 

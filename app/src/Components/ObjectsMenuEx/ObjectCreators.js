@@ -1,9 +1,9 @@
 import React from 'react';
 //eslint-disable-next-line
-import { RadioAndListDialog } from '../Common/RadioAndListDialog'
+import RadioAndListDialog from '../Common/RadioAndListDialog'
 import { getRandom64 } from '../../Functions/Common';
 import { createKeyId } from '../../Functions/ObjectProcessor';
-import { RadioButtonGroup } from '../Common/RadioButtonGroup';
+import RadioButtonGroup from '../Common/RadioButtonGroup';
 import CreateFormDialog from './Dialogs/CreateFormDialog';
 import { getSheet } from '../../Managers/GoogleAPIs/GoogleSheet'
 import CreateTableDialog from './Dialogs/CreateTableDialog';
@@ -48,7 +48,7 @@ export function createList(addObjects, showDialogBox) {
         okFunction: () => {
             const listDialog = listDialogRef.current;
 
-            const listType = listDialog.getOption();
+            const listType = listDialog.getRadioValue();
             const items = listDialog.getItems();
             const listItems = items.map(item => {
                 return <li key={createKeyId('li')}>{item}</li>
@@ -107,9 +107,9 @@ export function createRadioButton(addObjects, showDialogBox) {
             /**@type{Array} */
             const radioBtnDialog = radioBtnDialogRef.current;
             const radioBtnLabels = radioBtnDialog.getItems();
-            const radioBtnLayout = radioBtnDialog.getOption();
+            const radioBtnLayout = radioBtnDialog.getRadioValue();
 
-            addObjects(RadioButtonGroup({ labels: radioBtnLabels, name: radioBtnName, layout: radioBtnLayout, 'data-objtype': OBJ_TYPES.radio }));
+            addObjects(RadioButtonGroup({ labels: radioBtnLabels, name: radioBtnName, layout: radioBtnLayout, objType: OBJ_TYPES.radio }));
         },
         okText: OK_BTN_TEXT,
     })

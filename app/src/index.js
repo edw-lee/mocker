@@ -17,7 +17,7 @@ IDBManager.init().then(() => {
       createNewProject(DEFAULT_PROJECT_NAME);
   }).catch(e =>
     console.log(e)
-  ).finally(_ =>
+  ).finally(()=>
     ReactDOM.render(
       <App />,
       document.getElementById('root')

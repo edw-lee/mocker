@@ -23,6 +23,8 @@ class PropertiesClass extends React.Component {
             //Returns true if it is excluded
             else if (prop.excluded)
                 return selectedObjTypes.every(objtype => !prop.excluded.includes(objtype));
+            else
+                return null;
         }).map(propKey => {
             const prop = propPanelsDict[propKey];
 
@@ -85,7 +87,7 @@ class PropertiesClass extends React.Component {
 
         const updateObj = objects => {
             objects = objects.map(obj => {
-                if (!obj) return;
+                if (!obj) return null;
 
                 if (obj instanceof Array)
                     return updateObj(obj);

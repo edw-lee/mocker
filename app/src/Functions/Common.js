@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DialogBox } from '../Components/Common';
+import DialogBox from '../Components/Common/DialogBox';
 import fontFamilies from '../Constants/font_families.json';
 import { jsonObjToReact } from './ObjectProcessor';
 import { saveAs } from 'file-saver'
@@ -139,10 +139,10 @@ export function createHTMLBlob(page) {
 export function sendXMLRequest(url, success, failure, responseType = 'blob') {
     const req = new XMLHttpRequest();
 
-    req.onreadystatechange = _ => {
+    req.onreadystatechange = ()=> {
         if (req.readyState === XMLHttpRequest.DONE) {
             const status = req.status;
-            if (status === 0 || status >= 200 && status < 400)
+            if (status === 0 || (status >= 200 && status < 400))
                 success(req.response)
             else
                 failure(req.responseText);
@@ -177,12 +177,11 @@ export function getFileNamesFromPublic(dir, filter) {
 /** 
  * @param {Blob} blob 
  */
-export function blobToBase64(blob)
-{
+export function blobToBase64(blob) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onerror = e => reject('Failed to convert blob to base64.');
-        reader.onloadend = _ => resolve(reader.result);        
+        reader.onloadend = ()=> resolve(reader.result);
     });
 }

@@ -1,22 +1,22 @@
 import React from 'react';
 import PropsBox from '../PropsBox';
 import FontSelector from '../../Common/FontSelector'
-import { StyledRadioGroupClass } from '../../Common/StyledRadioGroupClass';
+import StyledRadioGroup from '../../Common/StyledRadioGroup';
 import { createTextDecoObj, createTypeObj, createStyleObj } from '../CommonPropReturns';
 import { getTextAlign, getTextDeco, getStyle } from '../CommonPropGetters';
-import ColorToggleButton from '../../Common/ColorToggleButton';
+import IconToggleButton from '../../Common/IconToggleButton';
 
 export default function HeadingStyles({ updateObjectsProps, getSelectedCommonProp }) {
     const changeHeadingLevel = type => {
-        updateObjectsProps(_ => createTypeObj(type));
+        updateObjectsProps(()=> createTypeObj(type));
     }
 
     const changeFontFamily = fontFamily => {
-        updateObjectsProps(_ => createStyleObj('fontFamily', fontFamily));
+        updateObjectsProps(()=> createStyleObj('fontFamily', fontFamily));
     }
 
     const changeTextAlign = textAlign => {
-        updateObjectsProps(_ => createStyleObj('textAlign', textAlign));
+        updateObjectsProps(()=> createStyleObj('textAlign', textAlign));
     }
 
     const textAlign = getSelectedCommonProp(getTextAlign);
@@ -41,7 +41,7 @@ export default function HeadingStyles({ updateObjectsProps, getSelectedCommonPro
 
     return (
         <PropsBox title='Headings'>
-            <StyledRadioGroupClass labels={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']} values={['h1', 'h2', 'h3', 'h4', 'h5', 'h6']}
+            <StyledRadioGroup labels={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']} values={['h1', 'h2', 'h3', 'h4', 'h5', 'h6']}
                 onChange={e => changeHeadingLevel(e.target.value)} checkedValue={selectedHeading} />
 
             <div className='props-row'>
@@ -51,35 +51,35 @@ export default function HeadingStyles({ updateObjectsProps, getSelectedCommonPro
 
             <div className='props-row'>
                 <div className='props-btn-grp'>
-                    <ColorToggleButton onClick={_ => changeTextDeco('italic')} toggleState={isItalic}>
+                    <IconToggleButton onClick={()=> changeTextDeco('italic')} toggleState={isItalic}>
                         <i className='fas fa-italic'></i>
-                    </ColorToggleButton>
+                    </IconToggleButton>
 
-                    <ColorToggleButton onClick={_ => changeTextDeco('underline')} toggleState={isUnderlined}>
+                    <IconToggleButton onClick={()=> changeTextDeco('underline')} toggleState={isUnderlined}>
                         <i className='fas fa-underline'></i>
-                    </ColorToggleButton>
+                    </IconToggleButton>
 
-                    <ColorToggleButton onClick={_ => changeTextDeco('line-through')} toggleState={isStrikeThrough}>
+                    <IconToggleButton onClick={()=> changeTextDeco('line-through')} toggleState={isStrikeThrough}>
                         <i className='fas fa-strikethrough'></i>
-                    </ColorToggleButton>
+                    </IconToggleButton>
                 </div>
 
                 <div className='props-btn-grp'>
-                    <ColorToggleButton onClick={_ => changeTextAlign('left')} toggleState={textAlign === 'left'}>
+                    <IconToggleButton onClick={()=> changeTextAlign('left')} toggleState={textAlign === 'left'}>
                         <i className='fas fa-align-left'></i>
-                    </ColorToggleButton>
+                    </IconToggleButton>
 
-                    <ColorToggleButton onClick={_ => changeTextAlign('center')} toggleState={textAlign === 'center'}>
+                    <IconToggleButton onClick={()=> changeTextAlign('center')} toggleState={textAlign === 'center'}>
                         <i className='fas fa-align-center'></i>
-                    </ColorToggleButton>
+                    </IconToggleButton>
 
-                    <ColorToggleButton onClick={_ => changeTextAlign('right')} toggleState={textAlign === 'right'}>
+                    <IconToggleButton onClick={()=> changeTextAlign('right')} toggleState={textAlign === 'right'}>
                         <i className='fas fa-align-right'></i>
-                    </ColorToggleButton>
+                    </IconToggleButton>
 
-                    <ColorToggleButton onClick={_ => changeTextAlign('justify')} toggleState={textAlign === 'justify'}>
+                    <IconToggleButton onClick={()=> changeTextAlign('justify')} toggleState={textAlign === 'justify'}>
                         <i className='fas fa-align-justify'></i>
-                    </ColorToggleButton>
+                    </IconToggleButton>
                 </div>
             </div>
 

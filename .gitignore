@@ -1,11 +1,11 @@
 *.svg
-*/node_modules
-*/.env
+node_modules
+*/.env.*
 */.vscode
 */package-lock.json
 package-lock.json
 *.code-workspace
-node_modules
+*/*.code-workspace
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -22,11 +22,8 @@ node_modules
 
 # misc
 *.DS_Store
-*.env.local
-*.env.development.local
-*.env.test.local
-*.env.production.local
 *.env
+*.env.*
 *.eslintcache
 
 */npm-debug.log*
@@ -34,3 +31,4 @@ node_modules
 */yarn-error.log*
 
 */.deployment
+*.deployment

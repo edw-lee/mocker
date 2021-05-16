@@ -9,9 +9,9 @@ export const checkDoubleClick = (dataid, selectedIds, container, objects, double
     //Adds to the mouse click counter, 
     //if it is 1 start a timeout timer for the second click and resets the counter if the timeout has expired
     let timer = null;
-    if (doubleClickCounter == 0) {
+    if (doubleClickCounter === 0) {
         setDoubleClickCounter(1);
-        timer = setTimeout(_ => setDoubleClickCounter(0), DOUBLECLICK_DELAY);
+        timer = setTimeout(()=> setDoubleClickCounter(0), DOUBLECLICK_DELAY);
         //If it is 1 and it has the same id as the previous selected id, then this is the second click so execute double click
     } else if (selectedIds.length && dataid === selectedIds[0]) {
         doubleClick(dataid, container, objects, setEditingFlag, updateOneObject);
@@ -47,7 +47,7 @@ export const doubleClick = (dataid, container, objects, setEditingFlag, updateOn
                 target.addEventListener('keydown', onEnter);
 
             //Reset states on blur
-            target.onblur = _ => {
+            target.onblur = ()=> {
                 setEditingFlag(false);
 
                 let idx = 0, object = null;
@@ -58,7 +58,7 @@ export const doubleClick = (dataid, container, objects, setEditingFlag, updateOn
                     if (obj.props['data-id'] === dataid) {
                         //Create a new key, so that React's renderer will replace the current DOM object.
                         //Using the object's existing key will cause duplicate bug
-                        const key = createKeyId(obj.type);
+                        //const key = createKeyId(obj.type);
 
                         const props = {};
                         //If there is a children prop, skip it because dangerouslySetInnerHTML will be used instead

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuListPlus } from '../Common'
+import MenuListPlus from '../Common/MenuListPlus'
 import './css/PageMenuEx.scss';
 
 export function PageMenuEx(props) {        

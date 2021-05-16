@@ -7,8 +7,10 @@ import Styles from './Styles';
 import Lists from './Lists';
 import Carousel from './Carousel'
 
-export default {
+const propPanels = {
     PropsAlign, TextParagraphs,
     DimensionsPositions, MarginsPaddings,    
     Headings, Styles, Lists, Carousel
 };
+
+export default propPanels;

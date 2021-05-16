@@ -1,0 +1,14 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        "*/node_modules",
+        ".vscode{,/**}",
+        "*.code-workspace{, /**}",
+        "app",
+        "!server",
+        "!app/build",
+        ".git{, /**}",
+        "*.svg"
+    ],    
+    "appService.deploySubpath": "."
+}

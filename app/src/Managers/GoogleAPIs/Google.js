@@ -23,14 +23,14 @@ export const AUTH_TIMEOUT = 10 * 60 * 1000;
 export function initClient(_updateSignInStatus) {
     updateSignInStatus = _updateSignInStatus;
 
-    const init = _ => {
+    const init = ()=> {
         console.log('Initializing Google client...')
         gapi.client.init({
             apiKey: DEV_KEY,
             clientId: CLIENT_ID,
             scope: SCOPES,
             discoveryDocs: DISCOVER_DOCS
-        }).then(_ => {
+        }).then(()=> {
             const authInstance = gapi.auth2.getAuthInstance();
 
             authInstance.isSignedIn.listen(handleSignInStatus);                        
@@ -69,7 +69,7 @@ export function signIn() {
 }
 
 export function signOut() {
-    gapi.auth2.getAuthInstance().signOut().then(_ => {
+    gapi.auth2.getAuthInstance().signOut().then(()=> {
         oAuthToken = '';
         handleSignInStatus(false);
     }).catch(e => console.log(e));
@@ -105,7 +105,7 @@ export function authorize(callback) {
                         var authWSTimeout;
                         var authWindow;
 
-                        authWS.onopen = _ => {
+                        authWS.onopen = ()=> {
                             authWindow = window.open(authUrl, 'Auth Window', 'width=480,height=640');
                             authWSTimeout = setTimeout(() => {
                                 authWS.close();
@@ -113,7 +113,7 @@ export function authorize(callback) {
                             }, AUTH_TIMEOUT);
                         };
 
-                        authWS.onclose = _ => {
+                        authWS.onclose = ()=> {
                             clearTimeout(authWSTimeout);
                             console.log('Mocker\'s websocket closed.', authWS.readyState);
                         }

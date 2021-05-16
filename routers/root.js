@@ -38,7 +38,8 @@ router.post('/login', (req, res) => {
 
 router.get('/readpublicdir', (req, res) => {
     let { dir } = req.query;
-    dir = path.join(__dirname, `../build/${dir}`);    
+
+    dir = path.join(__dirname, `../${process.env.APP_FOLDER}/${dir}`);    
 
     if (dir) {
         const getFiles = async (_dir) => {        

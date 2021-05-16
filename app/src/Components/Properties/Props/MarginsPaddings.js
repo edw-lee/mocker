@@ -41,7 +41,7 @@ export default function MarginsPaddings({ updateObjectsProps, getSelectedCommonP
     const changeMarginPadding = (styleProp, oldValue, newValue) => {
         if(oldValue === newValue) return;
 
-        updateObjectsProps(_ => createStyleObj(styleProp, newValue));
+        updateObjectsProps(()=> createStyleObj(styleProp, newValue));
     }
 
     return (

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { StyledRadioGroupClass } from "../../Common/StyledRadioGroupClass";
+import StyledRadioGroup from "../../Common/StyledRadioGroup";
 import { createTypeObj } from "../CommonPropReturns";
 import PropsBox from "../PropsBox";
 
@@ -8,11 +8,11 @@ export default function ListStyles({ updateObjectsProps, getSelectedCommonProp }
 
     const selectedListType = getSelectedCommonProp(obj => obj.type);
 
-    const changeListType = listType => updateObjectsProps(_ => createTypeObj(listType));
+    const changeListType = listType => updateObjectsProps(()=> createTypeObj(listType));
 
     return (
         <PropsBox title='Lists'>
-            <StyledRadioGroupClass ref={radioRef} labels={['Bullet', 'Numbered']} values={['ul', 'ol']} name='radiolist-option'
+            <StyledRadioGroup ref={radioRef} labels={['Bullet', 'Numbered']} values={['ul', 'ol']} name='radiolist-option'
                 checkedValue={selectedListType} onChange={e => changeListType(e.target.value)} />
         </PropsBox>
     );

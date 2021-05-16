@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuList } from '../Common';
+import MenuList from '../Common/MenuList';
 //eslint-disable-next-line
 import { SpreadsheetMenuExClass } from './SpreadsheetMenuExClass';
 import './css/SpreadsheetMenuEx.scss';

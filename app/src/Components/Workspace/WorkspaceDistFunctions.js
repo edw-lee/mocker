@@ -119,7 +119,7 @@ export const findNearestObj = (objects, selectedIds, mousePos, container) => {
 
                 //*If position was set to INLAYOUT when calculating the vertical distances, then it is a layout object
                 //If it is INLAYOUT and not a table cell, check if the X distance is outside the object, if it is inside, then no need to do anything.                          
-                if (!isTableCell || position === POSITION.INSIDE && xDistAbs > halfWidth) {
+                if (!isTableCell || (position === POSITION.INSIDE && xDistAbs > halfWidth)) {
                     //If it is outside then it is not INLAYOUT, then check if it is BEFORE or AFTER
                     if (xDist > 0)
                         position = POSITION.BEFORE;

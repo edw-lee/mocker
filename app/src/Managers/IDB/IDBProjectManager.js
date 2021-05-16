@@ -1,4 +1,4 @@
-import { DB_STORES_INFO, DB_NAME } from './IDBConstants';
+import { DB_STORES_INFO } from './IDBConstants';
 import * as IDBManager from './IDBManager';
 
 const PROJECT_STORE_NAME = Object.keys(DB_STORES_INFO)[0];

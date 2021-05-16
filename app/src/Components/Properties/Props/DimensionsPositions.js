@@ -19,7 +19,7 @@ export default function DimensionsPositions({ updateObjectsProps, getSelectedCom
     const changeDimPos = (styleProp, oldValue, newValue) => { 
         if(oldValue === newValue) return;
 
-        updateObjectsProps(_ => createStyleObj(styleProp, newValue));
+        updateObjectsProps(()=> createStyleObj(styleProp, newValue));
     }
 
     return (

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { Workspace } from './Workspace';
 import * as IDBPageManager from '../../Managers/IDB/IDBPageManager'
 import { getGoogleFontsUrl } from '../../Functions/Common';
-import { createKeyId } from '../../Functions/ObjectProcessor';
 import { connect } from 'react-redux'
 import { addObjects, deselectAll, deselectObject, replaceObjects, selectObject, selectOneObject, setCurrentPage, updateOneObject } from '../../Redux/Workspace/WorkspaceActions'
 import { findNearestObj } from './WorkspaceDistFunctions';
@@ -11,8 +10,8 @@ import { getAllSelected, move } from './WorkspaceMoveFunctions';
 import { checkDoubleClick } from './WorkspaceClickFunctions';
 
 
-const DRAGBOX_ID = 'dragbox';
-const DRAGBOX_KEY = createKeyId('dragbox');
+// const DRAGBOX_ID = 'dragbox';
+// const DRAGBOX_KEY = createKeyId('dragbox');
 
 export const POSITION = { BEFORE: 0, INSIDE: 1, AFTER: 2 }
 
@@ -65,7 +64,7 @@ class WorkspaceClass extends React.Component {
         if (!this.container) return;
 
         var { objects, selectedIds } = this.props;
-        const { hoverId, dragPos, isDragging } = this.state;
+        const { hoverId, isDragging } = this.state;
 
         //Add highlight to selected objects
         const addSelectorBox = _objects => {
@@ -129,7 +128,7 @@ class WorkspaceClass extends React.Component {
         // if (isDragging)
         //     objects.push(<span key={DRAGBOX_KEY} id={DRAGBOX_ID} style={{ position: 'absolute', left: dragPos.x, top: dragPos.y }}>{this.mouseDragObjs}</span>);
 
-        ReactDOM.render(objects, this.container, _ => {
+        ReactDOM.render(objects, this.container, ()=> {
             //Update the html document
             this.htmlDoc.dispatchEvent(new Event('update'));            
         });
@@ -189,7 +188,7 @@ class WorkspaceClass extends React.Component {
         });
     }
 
-    mouseDrag = _ => {
+    mouseDrag = ()=> {
         const { selectedIds } = this.props;
 
         const result = findNearestObj(this.props.objects, selectedIds, this.mousePos, this.container);
@@ -350,12 +349,12 @@ class WorkspaceClass extends React.Component {
             this.delete();
     }
 
-    delete = _ => {
+    delete = ()=> {
         const { selectedIds } = this.props;
 
         const _delete = objects => objects.map(obj => {
             if (selectedIds.includes(obj.props['data-id']))
-                return;
+                return null;
 
             let objChildren = obj.props.children;
             if (objChildren) {
@@ -365,7 +364,7 @@ class WorkspaceClass extends React.Component {
                     if (children !== objChildren)
                         return React.createElement(obj.type, { ...obj.props, key: obj.key, children });
                 } else if (objChildren.props && selectedIds.includes(objChildren.props['data-id']))
-                    return;
+                    return null;
             }
 
             return obj;
@@ -447,7 +446,7 @@ const mapDispatchToProps = dispatch => {
         selectOneObject: (dataid, objtype) => dispatch(selectOneObject(dataid, objtype)),
         selectObject: (dataid, objtype) => dispatch(selectObject(dataid, objtype)),
         deselectObject: (dataid, objtype) => dispatch(deselectObject(dataid, objtype)),
-        deselectAll: _ => dispatch(deselectAll())
+        deselectAll: ()=> dispatch(deselectAll())
     }
 }
 
