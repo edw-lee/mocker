@@ -22,8 +22,8 @@ const paddingBoxStyle = {
     background: 'var(--secondary-l)'
 }
 
-function InputBox({ selectedValue, onValueChanged, title }) {
-    return <UnitInput title={title} selectedValue={selectedValue} onValueChanged={onValueChanged}
+function InputBox({ selectedValue, onBlur, title }) {
+    return <UnitInput title={title} selectedValue={selectedValue} onBlur={onBlur}
         style={inputStyle} placeholder='auto' />
 }
 
@@ -49,43 +49,43 @@ export default function MarginsPaddings({ updateObjectsProps, getSelectedCommonP
             <div title='Margin Area'>
                 <div className='props-row props-no-margin'>
                     <InputBox selectedValue={selectedMarginTop} title='Top Margin'
-                        onValueChanged={marginTop => changeMarginPadding('marginTop', selectedMarginTop, marginTop)} />
+                        onBlur={marginTop => changeMarginPadding('marginTop', selectedMarginTop, marginTop)} />
                 </div>
 
                 <div className='props-row'>
                     <InputBox selectedValue={selectedMarginLeft} title='Left Margin'
-                        onValueChanged={marginLeft => changeMarginPadding('marginLeft', selectedMarginLeft, marginLeft)} />
+                        onBlur={marginLeft => changeMarginPadding('marginLeft', selectedMarginLeft, marginLeft)} />
 
                     <div style={marginBoxStyle} title='Padding Area'>
                         <div className='props-row'>
                             <InputBox selectedValue={selectedPadTop} title='Top Padding'
-                                onValueChanged={paddingTop => changeMarginPadding('paddingTop', selectedPadTop, paddingTop)} />
+                                onBlur={paddingTop => changeMarginPadding('paddingTop', selectedPadTop, paddingTop)} />
                         </div>
 
                         <div className='props-row'>
                             <InputBox selectedValue={selectedPadLeft} title='Left Padding'
-                                onValueChanged={paddingLeft => changeMarginPadding('paddingLeft', selectedPadLeft, paddingLeft)} />
+                                onBlur={paddingLeft => changeMarginPadding('paddingLeft', selectedPadLeft, paddingLeft)} />
 
                             <div style={paddingBoxStyle} title='Object'>
                             </div>
 
                             <InputBox selectedValue={selectedPadRight} title='Right Padding'
-                                onValueChanged={paddingRight => changeMarginPadding('paddingRight', selectedPadRight, paddingRight)} />
+                                onBlur={paddingRight => changeMarginPadding('paddingRight', selectedPadRight, paddingRight)} />
                         </div>
 
                         <div className='props-row'>
                             <InputBox selectedValue={selectedPadBottom} title='Bottom Padding'
-                                onValueChanged={paddingBottom => changeMarginPadding('paddingBottom', selectedPadBottom, paddingBottom)} />
+                                onBlur={paddingBottom => changeMarginPadding('paddingBottom', selectedPadBottom, paddingBottom)} />
                         </div>
                     </div>
 
                     <InputBox selectedValue={selectedMarginRight} title='Right Margin'
-                        onValueChanged={marginRight => changeMarginPadding('marginRight', selectedMarginRight, marginRight)} />
+                        onBlur={marginRight => changeMarginPadding('marginRight', selectedMarginRight, marginRight)} />
                 </div>
 
                 <div className='props-row'>
                     <InputBox selectedValue={selectedMarginBottom} title='Bottom Margin'
-                        onValueChanged={marginBottom => changeMarginPadding('marginBottom', selectedMarginBottom, marginBottom)} />
+                        onBlur={marginBottom => changeMarginPadding('marginBottom', selectedMarginBottom, marginBottom)} />
                 </div>
             </div>
 

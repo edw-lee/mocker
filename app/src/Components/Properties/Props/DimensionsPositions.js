@@ -33,7 +33,7 @@ export default function DimensionsPositions({ updateObjectsProps, getSelectedCom
                 <div className='props-input-grp-col'>
                     <label>Width</label>
                     <UnitInput style={{ width: '4rem' }} selectedValue={selectedWidth} placeholder='auto'
-                        onValueChanged={width => changeDimPos('width', selectedWidth, width)} />
+                        onBlur={width => changeDimPos('width', selectedWidth, width)} />
                 </div>
 
                 <div>
@@ -44,7 +44,7 @@ export default function DimensionsPositions({ updateObjectsProps, getSelectedCom
                 <div className='props-input-grp-col'>
                     <label>Height</label>
                     <UnitInput style={{ width: '3rem' }} selectedValue={selectedHeight} placeholder='auto'
-                        onValueChanged={height => changeDimPos('height', selectedHeight, height)} />
+                        onBlur={height => changeDimPos('height', selectedHeight, height)} />
                 </div>
             </div>
 
@@ -52,32 +52,32 @@ export default function DimensionsPositions({ updateObjectsProps, getSelectedCom
                 <div className='props-input-grp-col'>
                     <label>Top</label>
                     <UnitInput style={{ width: '3rem' }} selectedValue={selectedTop} placeholder='auto'
-                        onValueChanged={top => changeDimPos('top', selectedTop, top)} />                    
+                        onBlur={top => changeDimPos('top', selectedTop, top)} />                    
                 </div>
 
                 <div className='props-input-grp-col'>
                     <label>Right</label>
                     <UnitInput style={{ width: '3rem' }} selectedValue={selectedRight} placeholder='auto'
-                        onValueChanged={right => changeDimPos('right', selectedRight, right)} />
+                        onBlur={right => changeDimPos('right', selectedRight, right)} />
                 </div>
 
 
                 <div className='props-input-grp-col'>
                     <label>Bottom</label>
                     <UnitInput style={{ width: '3rem' }} selectedValue={selectedBottom} placeholder='auto'
-                        onValueChanged={bottom => changeDimPos('bottom', selectedBottom, bottom)} />                    
+                        onBlur={bottom => changeDimPos('bottom', selectedBottom, bottom)} />                    
                 </div>
 
                 <div className='props-input-grp-col'>
                     <label>Left</label>
                     <UnitInput style={{ width: '3rem' }} selectedValue={selectedLeft} placeholder='auto'
-                        onValueChanged={left => changeDimPos('left', selectedLeft, left)} />                    
+                        onBlur={left => changeDimPos('left', selectedLeft, left)} />                    
                 </div>
 
                 <div className='props-input-grp-col'>
                     <label>Z-Index</label>
                     <UnitInput style={{ width: '3rem' }} selectedValue={selectedZIndex} placeholder='auto'
-                        onValueChanged={zindex => changeDimPos('zIndex', selectedZIndex, zindex)} />                    
+                        onBlur={zindex => changeDimPos('zIndex', selectedZIndex, zindex)} />                    
                 </div>
             </div>
         </PropsBox>
