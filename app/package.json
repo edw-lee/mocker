@@ -43,7 +43,7 @@
   },
   "scripts": {
     "start": "env-cmd -f .env.dev.local react-scripts start & sass --watch src/Public/scss:public/css src/Public/workspace:public/workspace",
-    "build": "env-cmd -f .env.dev.deploy react-scripts build",
+    "build": "env-cmd -f .env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
