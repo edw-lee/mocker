@@ -1,4 +1,4 @@
-require('dotenv').config({path:'.env.dev.deploy'}); //This must be the first one to initialize to prevent dependency errors
+require('dotenv').config({path:'.env.dev.local'}); //This must be the first one to initialize to prevent dependency errors
 
 const express = require('express');
 const rootrouter = require('./routers/root');
